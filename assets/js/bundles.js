@@ -53,7 +53,8 @@
     e.preventDefault(); apply(a.dataset.mat);
     document.querySelector('.bp-bar').scrollIntoView({ behavior: 'smooth' });
   }));
-  apply('alla');
+  const m = new URLSearchParams(location.search).get('m');
+  apply(['linne', 'percale', 'stort'].includes(m) ? m : 'alla');
 
   SOM.fadeIn('.bp-included li');
 })();

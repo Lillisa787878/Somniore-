@@ -58,13 +58,23 @@
   const MEGA = {
     sangklader: `
       <div class="mega__col">
-        ${megaHead('Sängkläder', catLink('alla'))}
-        ${Object.entries(CATEGORIES).map(([k, c]) => `<a href="${catLink(k)}">${c.plural}</a>`).join('')}
+        ${megaHead('Lakan', catLink('lakanset'))}
+        <a href="${catLink('lakanset')}">Lakanset</a>
+        <a href="baddpaket.html">Bäddpaket</a>
+        <a href="${catLink('paslakanset')}">Påslakanset</a>
+        <a href="${catLink('drapa')}">Dra-på-lakan</a>
+        <a href="${catLink('lakan')}">Lakan styckvis</a>
+      </div>
+      <div class="mega__col">
+        ${megaHead('Bäddning', catLink('paslakan'))}
+        <a href="${catLink('paslakan')}">Påslakan</a>
+        <a href="${catLink('orngott')}">Örngott</a>
+        <a href="${catLink('paslakanset')}">Påslakan med örngott</a>
       </div>
       <div class="mega__col">
         ${megaHead('Material', 'material.html')}
-        <a href="${catLink('linne')}" class="mega__mat">Linne<small>${MATERIALS.linne.short}</small></a>
         <a href="${catLink('percale')}" class="mega__mat">Percale<small>${MATERIALS.percale.short}</small></a>
+        <a href="${catLink('linne')}" class="mega__mat">Linne<small>${MATERIALS.linne.short}</small></a>
         <a href="material.html" class="mega__mat">Jämför material<small>Hitta din favorit.</small></a>
       </div>
       <div class="mega__col">
@@ -72,54 +82,15 @@
         ${Object.entries(COLOR_GROUPS).map(([k, g]) => `<a href="kollektion.html?c=alla&farg=${k}"><i style="--c:${g.hex}"></i>${g.name}</a>`).join('')}
       </div>
       <div class="mega__col">
-        ${megaHead('Utvalt', catLink('bastsaljare'))}
-        <a href="${catLink('bastsaljare')}">Bästsäljare</a>
-        <a href="${catLink('nyheter')}">Nyheter</a>
-        <a href="${'baddpaket.html'}">Bäddpaket</a>
-        <a href="material.html">Våra material</a>
+        <span class="mega__head mega__head--plain">Paket &amp; spara</span>
+        <a href="baddpaket.html">Alla bäddpaket</a>
+        <a href="baddpaket.html?m=percale">Bäddpaket i percale</a>
+        <a href="baddpaket.html?m=linne">Bäddpaket i linne</a>
       </div>
       <a class="mega__feature" href="${productUrl(productById('linne-paslakan'), 'midnatt')}">
-        <img src="assets/img/linen-blue-room.jpg" alt="">
+        <img src="assets/img/linen-blue-dusk.jpg" alt="">
         <span class="mega__feature-title">Mörka kvällar.<br>Svala lakan.</span>
         <span class="mega__feature-link">→ Shoppa Midnatt</span>
-      </a>`,
-    linne: `
-      <div class="mega__col">
-        ${megaHead('Linne', catLink('linne'))}
-        ${PRODUCTS.filter(p => p.material === 'linne').map(p => `<a href="${productUrl(p)}">${CATEGORIES[p.cat].name}</a>`).join('')}
-      </div>
-      <div class="mega__col">
-        ${megaHead('Färger', catLink('linne'))}
-        ${colDots('linne')}
-      </div>
-      <div class="mega__col mega__col--text">
-        ${megaHead('Om linne', 'material.html')}
-        <p>${MATERIALS.linne.spec}</p>
-        <p>${MATERIALS.linne.about}</p>
-      </div>
-      <a class="mega__feature" href="${catLink('linne')}">
-        <img src="assets/img/linen-beige-window.jpg" alt="">
-        <span class="mega__feature-title">Tvättat linne.</span>
-        <span class="mega__feature-link">→ Shoppa linne</span>
-      </a>`,
-    percale: `
-      <div class="mega__col">
-        ${megaHead('Percale', catLink('percale'))}
-        ${PRODUCTS.filter(p => p.material === 'percale').map(p => `<a href="${productUrl(p)}">${CATEGORIES[p.cat].name}</a>`).join('')}
-      </div>
-      <div class="mega__col">
-        ${megaHead('Färger', catLink('percale'))}
-        ${colDots('percale')}
-      </div>
-      <div class="mega__col mega__col--text">
-        ${megaHead('Om percale', 'material.html')}
-        <p>${MATERIALS.percale.spec}</p>
-        <p>${MATERIALS.percale.about}</p>
-      </div>
-      <a class="mega__feature" href="${catLink('percale')}">
-        <img src="assets/img/percale-white-window.jpg" alt="">
-        <span class="mega__feature-title">Krispig percale.</span>
-        <span class="mega__feature-link">→ Shoppa percale</span>
       </a>`,
   };
 
@@ -131,10 +102,9 @@
       <button class="burger" id="burger" aria-label="Meny" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav" aria-label="Huvudmeny">
         <a href="${catLink('bastsaljare')}" class="nav__link">Bästsäljare</a>
-        <a href="${'baddpaket.html'}" class="nav__link">Bäddpaket</a>
+        <a href="${catLink('nyheter')}" class="nav__link">Nyheter</a>
         <div class="nav__item" data-mega="sangklader"><a href="${catLink('alla')}" class="nav__link">Sängkläder</a></div>
-        <div class="nav__item" data-mega="linne"><a href="${catLink('linne')}" class="nav__link">Linne</a></div>
-        <div class="nav__item" data-mega="percale"><a href="${catLink('percale')}" class="nav__link">Percale</a></div>
+        <a href="${catLink('bad')}" class="nav__link">Bad &amp; Morgonrockar</a>
       </nav>
       <a href="index.html" class="logo" aria-label="Somniore – till startsidan">SOMNIORE</a>
       <div class="tools">
@@ -158,16 +128,15 @@
       </div>
       <nav class="drawer__nav">
         <a href="${catLink('bastsaljare')}">Bästsäljare</a>
-        <a href="${'baddpaket.html'}">Bäddpaket</a>
+        <a href="${catLink('nyheter')}">Nyheter</a>
         <details><summary>Sängkläder</summary>
-          <div>${Object.entries(CATEGORIES).map(([k, c]) => `<a href="${catLink(k)}">${c.plural}</a>`).join('')}<a href="${catLink('alla')}">Visa alla</a></div>
+          <div>
+            <a href="${catLink('lakanset')}">Lakanset</a><a href="baddpaket.html">Bäddpaket</a><a href="${catLink('paslakanset')}">Påslakanset</a>
+            <a href="${catLink('paslakan')}">Påslakan</a><a href="${catLink('lakan')}">Lakan</a><a href="${catLink('drapa')}">Dra-på-lakan</a><a href="${catLink('orngott')}">Örngott</a>
+            <a href="${catLink('percale')}">Allt i percale</a><a href="${catLink('linne')}">Allt i linne</a><a href="${catLink('alla')}">Visa alla</a>
+          </div>
         </details>
-        <details><summary>Linne</summary>
-          <div>${PRODUCTS.filter(p => p.material === 'linne').map(p => `<a href="${productUrl(p)}">${p.name}</a>`).join('')}<a href="${catLink('linne')}">Allt i linne</a></div>
-        </details>
-        <details><summary>Percale</summary>
-          <div>${PRODUCTS.filter(p => p.material === 'percale').map(p => `<a href="${productUrl(p)}">${p.name}</a>`).join('')}<a href="${catLink('percale')}">Allt i percale</a></div>
-        </details>
+        <a href="${catLink('bad')}">Bad &amp; Morgonrockar</a>
         <a href="material.html">Våra material</a>
         <a href="om-oss.html">Om Somniore</a>
       </nav>

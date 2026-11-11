@@ -19,6 +19,17 @@
   document.getElementById('colDesc').textContent = col.desc;
   document.getElementById('colImg').src = IMG(col.img);
 
+  if (col.soon) {
+    document.getElementById('soon').hidden = false;
+    ['filters', 'grid'].forEach(id => document.getElementById(id).hidden = true);
+    document.getElementById('soonBtn').addEventListener('click', e => {
+      e.preventDefault();
+      const f = document.getElementById('email');
+      f.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => f.focus(), 600);
+    });
+    return;
+  }
+
   const base = PRODUCTS.filter(col.filter);
 
   /* Chips: kategorier i materialkollektioner, annars material */

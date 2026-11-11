@@ -116,7 +116,7 @@ body.is-top .header:not(:hover):not(.mega-open) {
 }
 .nav { display: flex; gap: 1.5rem; height: 100%; align-items: center; }
 .nav__item { height: 100%; display: flex; align-items: center; }
-.nav__link { font-size: .9rem; padding: .25rem 0; border-bottom: 1px solid transparent; transition: border-color .2s; }
+.nav__link { white-space: nowrap; font-size: .9rem; padding: .25rem 0; border-bottom: 1px solid transparent; transition: border-color .2s; }
 .nav__link:hover, .nav__item.active .nav__link { border-color: currentColor; }
 .logo {
   font-family: var(--serif);
@@ -142,7 +142,7 @@ body.is-top .header:not(:hover):not(.mega-open) {
 }
 .mega.open { opacity: 1; visibility: visible; pointer-events: auto; }
 .mega__inner {
-  display: grid; grid-template-columns: repeat(4, minmax(150px, 210px)) 220px;
+  display: grid; grid-template-columns: repeat(5, minmax(120px, 170px)) 200px; max-width: 1240px; margin: 0 auto;
   justify-content: center; gap: clamp(1.5rem, 3.5vw, 4rem);
   padding: 2.4rem var(--pad) 2.8rem;
 }
@@ -413,7 +413,7 @@ a.shade-card, .shade-card {
   .rail__track { grid-auto-columns: calc((100% - 2 * var(--inset) - 2 * var(--gap)) / 3); }
 }
 @media (max-width: 1100px) {
-  .mega__inner { grid-template-columns: repeat(4, 1fr); }
+  .mega__inner { grid-template-columns: repeat(5, 1fr); }
   .mega__feature { display: none; }
 }
 @media (max-width: 900px) {
@@ -955,3 +955,13 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
   .bp-included { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) { .bp-included ul { grid-template-columns: 1fr; } .bp-bar .filters__count { display: none; } }
+
+.mega__head--plain { cursor: default; }
+
+/* ---------- Kommer snart (t.ex. Bad & Morgonrockar) ---------- */
+.soon { max-width: 36rem; margin: 0 auto; padding: clamp(4rem, 8vw, 6rem) var(--pad) clamp(5rem, 9vw, 8rem); text-align: center; }
+.soon__kicker { font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--petrol); }
+.soon h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.05; margin: .9rem 0 1rem; }
+.soon p { color: var(--soft); }
+.soon .btn { margin-top: 1.8rem; }
+@media (max-width: 1240px) and (min-width: 901px) { .nav { gap: 1.1rem; } .nav__link { font-size: .85rem; } }
