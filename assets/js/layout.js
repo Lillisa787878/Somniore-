@@ -69,6 +69,7 @@
         ${megaHead('Bäddning', catLink('paslakanset'))}
         <a href="${productUrl(productById('linne-paslakanset'))}">Påslakanset i linne</a>
         <a href="${productUrl(productById('percale-paslakanset'))}">Påslakanset i percale</a>
+        <a href="${catLink('orngott')}">Örngott 2-pack</a>
         <a href="${catLink('paslakanset')}">Alla påslakanset</a>
       </div>
       <div class="mega__col">
@@ -154,7 +155,7 @@
             <p>Lakan</p>
             <a href="${catLink('lakanset')}">Lakanset</a><a href="baddpaket.html">Bäddpaket</a><a href="${catLink('paslakanset')}">Påslakanset</a><a href="${catLink('drapa')}">Dra-på-lakan</a><a href="${catLink('lakan')}">Lakan styckvis</a>
             <p>Bäddning</p>
-            <a href="${productUrl(productById('linne-paslakanset'))}">Påslakanset i linne</a><a href="${productUrl(productById('percale-paslakanset'))}">Påslakanset i percale</a>
+            <a href="${productUrl(productById('linne-paslakanset'))}">Påslakanset i linne</a><a href="${productUrl(productById('percale-paslakanset'))}">Påslakanset i percale</a><a href="${catLink('orngott')}">Örngott 2-pack</a>
             <p>Material</p>
             <a href="${catLink('percale')}">Percale <small>${MATERIALS.percale.short}</small></a><a href="${catLink('linne')}">Linne <small>${MATERIALS.linne.short}</small></a>
             <a href="${catLink('alla')}" class="drawer__all">Visa alla sängkläder</a>

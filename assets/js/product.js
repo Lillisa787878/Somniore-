@@ -107,11 +107,11 @@
   }
 
   /* ---------- Storlek (boxar) ---------- */
-  $('pSizes').innerHTML = SIZES[p.cat].map(s => `<button class="pd-box" data-s="${s}"><b>${s}</b>cm</button>`).join('');
+  $('pSizes').innerHTML = SIZES[p.cat].map(sizeInfo).map(s => `<button class="pd-box" data-s="${s.label}"><b>${s.title}</b>${s.sub}</button>`).join('');
   $('pSizes').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     $('pSizes').querySelector('.active')?.classList.remove('active'); b.classList.add('active');
-    state.size = b.dataset.s; $('pSizeName').textContent = state.size + ' cm'; $('sizeError').textContent = '';
+    state.size = b.dataset.s; $('pSizeName').textContent = state.size; $('sizeError').textContent = '';
   });
 
   /* ---------- Antal + köp ---------- */
@@ -134,7 +134,7 @@
   sticky.className = 'pd-sticky';
   sticky.innerHTML = `<div class="pd-sticky__info"><b>${p.name}</b><span id="stickyMeta"></span></div><button class="pd-sticky__btn">Lägg i varukorg</button>`;
   document.body.appendChild(sticky);
-  const updateSticky = () => { $('stickyMeta').textContent = `${colorsOf(p)[state.color].name} · ${state.size ? state.size + ' cm' : 'Välj storlek'}`; };
+  const updateSticky = () => { $('stickyMeta').textContent = `${colorsOf(p)[state.color].name} · ${state.size || 'Välj storlek'}`; };
   updateSticky();
   document.addEventListener('click', e => { if (e.target.closest('#pSwatches, #pSizes')) setTimeout(updateSticky, 0); });
   sticky.querySelector('button').addEventListener('click', () => {
@@ -151,7 +151,7 @@
   const note = /paslakan/.test(p.cat) ? '<p><em>Påslakanet har dold knäppning och inre band som håller täcket på plats.</em></p>' : '';
   const detailsTable = `
     <dl class="pd-table">
-      <dt>Mått</dt><dd>${SIZES[p.cat].map(s => s + ' cm').join('<br>')}</dd>
+      <dt>Mått</dt><dd>${SIZES[p.cat].map(s => sizeInfo(s).label).join('<br>')}</dd>
       <dt>Material</dt><dd>${mat.spec}</dd>
       <dt>Ursprung</dt><dd>Vävt i Guimarães, Portugal</dd>
       <dt>Detaljer</dt><dd>${p.details.join('<br>')}</dd>

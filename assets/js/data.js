@@ -52,6 +52,7 @@ const MATERIALS = {
 const CATEGORIES = {
   lakan:       { name: 'Lakan',        plural: 'Lakan',        card: 'stack',   hover: 'bed2',   gallery: ['stack', 'bed2', 'detail', 'bed'] },
   drapa:       { name: 'Dra-på-lakan', plural: 'Dra-på-lakan', card: 'stack',   hover: 'detail', gallery: ['stack', 'detail', 'bed', 'bed2'] },
+  orngott:     { name: 'Örngott',      plural: 'Örngott',      card: 'pillows', hover: 'bed',    gallery: ['pillows', 'bed', 'detail', 'bed2'] },
   lakanset:    { name: 'Lakanset',     plural: 'Lakanset',     card: 'stack',   hover: 'room',   gallery: ['stack', 'room', 'bed', 'pillows', 'detail'] },
   paslakanset: { name: 'Påslakanset',  plural: 'Påslakanset',  card: 'stack',   hover: 'bed',    gallery: ['bed', 'stack', 'pillows', 'bed2', 'room'] },
   baddpaket:   { name: 'Bäddpaket',    plural: 'Bäddpaket',    card: 'stack',   hover: 'room',   gallery: ['room', 'stack', 'bed', 'pillows', 'bed2', 'detail'] },
@@ -61,7 +62,13 @@ const SIZES = {
   lakan: ['150×260', '240×260', '270×270'],
   drapa: ['90×200', '120×200', '140×200', '160×200', '180×200'],
   lakanset: ['90×200', '140×200', '160×200', '180×200'],
-  paslakanset: ['150×210', '220×220', '240×220'],
+  orngott: ['50×60', '50×70', '65×65'],
+  /* Påslakanset: enkel = 1 påslakan + 1 örngott, dubbel = 1 dubbelpåslakan + 2 örngott */
+  paslakanset: [
+    { t: 'Enkel', d: '150×210 + 1 örngott' },
+    { t: 'Dubbel', d: '220×220 + 2 örngott' },
+    { t: 'Dubbel stor', d: '240×220 + 2 örngott' },
+  ],
   baddpaket: ['90×200', '140×200', '160×200', '180×200'],   // sängens bredd × längd
 };
 
@@ -78,9 +85,12 @@ const PRODUCTS = [
     includes: ['1 lakan', '1 dra-på-lakan', '2 örngott'],
     details: ['Samma linne och färgbad i alla delar', 'Förtvättat för minimal krympning'] },
   { id: 'linne-paslakanset', hero: 'mossa', name: 'Påslakanset i linne', material: 'linne', cat: 'paslakanset', best: true,
-    desc: 'Påslakan och två örngott i tvättat linne. Den enklaste vägen till en avslappnad, nordisk säng.',
-    includes: ['1 påslakan', '2 örngott'],
+    desc: 'Påslakan och örngott i tvättat linne — till enkelsängen med ett örngott, till dubbelsängen med två. Den enklaste vägen till en avslappnad, nordisk säng.',
+    includes: ['Enkel: 1 påslakan + 1 örngott', 'Dubbel: 1 dubbelpåslakan + 2 örngott'],
     details: ['Dold knäppning på påslakanet', 'Förtvättat för minimal krympning'] },
+  { id: 'linne-orngott', hero: 'mossa', name: 'Örngott 2-pack i linne', material: 'linne', cat: 'orngott', isNew: true, pack: '2-pack',
+    desc: 'Två örngott i stentvättat linne med innerficka som håller kudden på plats.',
+    details: ['Säljs i 2-pack', 'Innerficka', 'Förtvättat för minimal krympning'] },
 
   { id: 'percale-lakan', hero: 'salvia', name: 'Lakan i percale', material: 'percale', cat: 'lakan',
     desc: 'Ett klassiskt överlakan i percale — slätt, matt och svalt mot huden.',
@@ -93,9 +103,12 @@ const PRODUCTS = [
     includes: ['1 lakan', '1 dra-på-lakan', '2 örngott med oxfordkant'],
     details: ['Samma bomull och färgbad i alla delar', 'Mjuknar för varje tvätt'] },
   { id: 'percale-paslakanset', hero: 'fjord', name: 'Påslakanset i percale', material: 'percale', cat: 'paslakanset', best: true, isNew: true,
-    desc: 'Påslakan och två örngott med oxfordkant i svalt, krispigt percale.',
-    includes: ['1 påslakan', '2 örngott med oxfordkant'],
+    desc: 'Påslakan och örngott med oxfordkant i svalt, krispigt percale — till enkelsängen med ett örngott, till dubbelsängen med två.',
+    includes: ['Enkel: 1 påslakan + 1 örngott med oxfordkant', 'Dubbel: 1 dubbelpåslakan + 2 örngott med oxfordkant'],
     details: ['Dold knäppning på påslakanet', 'Mjuknar för varje tvätt'] },
+  { id: 'percale-orngott', hero: 'vit', name: 'Örngott 2-pack med oxfordkant', material: 'percale', cat: 'orngott', tag: 'Bästsäljare', pack: '2-pack',
+    desc: 'Två örngott i percale med klassisk oxfordkant — en tidlös detalj från hotellbäddningens värld.',
+    details: ['Säljs i 2-pack', 'Sydd oxfordkant', 'Innerficka'] },
 
   /* Bäddpaket: allt till sängen i ett köp */
   { id: 'linne-baddpaket', hero: 'mossa', name: 'Bäddpaket i linne', material: 'linne', cat: 'baddpaket', best: true, tag: 'Paketpris',
@@ -131,17 +144,22 @@ const COLLECTIONS = {
   badlakan:     { title: 'Badlakan', desc: 'Generösa badlakan att svepa in sig i. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
   morgonrockar: { title: 'Morgonrockar', desc: 'Lätta morgonrockar för långsamma morgnar. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
   baddpaket:   { title: 'Bäddpaket', desc: 'Hela sängen i ett köp — påslakan, lakan, dra-på-lakan och örngott i samma färg och material, till paketpris.', img: 'linen-beige-bed2.jpg', filter: p => p.cat === 'baddpaket', bundle: true },
+  orngott:     { title: 'Örngott', desc: 'Örngott i 2-pack — i tvättat linne eller percale med oxfordkant.', img: 'percale-beige-pillow.jpg', filter: p => p.cat === 'orngott' },
   paslakanset: { title: 'Påslakanset', desc: 'Påslakan och två örngott. Den enklaste vägen till en färdigbäddad säng.', img: 'percale-blue-candle.jpg', filter: p => p.cat === 'paslakanset' },
 };
 
 /* ---------- Hjälpfunktioner ---------- */
 const IMG = path => 'assets/img/' + path;
 /* Påslakan och örngott säljs bara tillsammans: gamla länkar leder till påslakanseten */
-const ALIASES = { 'linne-paslakan': 'linne-paslakanset', 'linne-orngott': 'linne-paslakanset', 'percale-paslakan': 'percale-paslakanset', 'percale-orngott': 'percale-paslakanset' };
-const COLLECTION_ALIASES = { paslakan: 'paslakanset', orngott: 'paslakanset' };
+const ALIASES = { 'linne-paslakan': 'linne-paslakanset', 'percale-paslakan': 'percale-paslakanset' };
+const COLLECTION_ALIASES = { paslakan: 'paslakanset' };
 const productById = id => PRODUCTS.find(p => p.id === (ALIASES[id] || id));
 const colorsOf = p => COLORS[p.material];
 const firstColorKey = p => p.hero || Object.keys(colorsOf(p))[0];
+/* Storlek som text: '150×200' eller { t: 'Dubbel', d: '220×220 + 2 örngott' } */
+const sizeInfo = s => typeof s === 'string'
+  ? { title: s, sub: 'cm', label: s + ' cm' }
+  : { title: s.t, sub: s.d, label: `${s.t} · ${s.d}` };
 const formatPrice = p => p.price ? p.price.toLocaleString('sv-SE') + ' kr' : 'Pris kommer snart';
 const productUrl = (p, color) => `produkt.html?p=${p.id}${color ? '&farg=' + color : ''}`;
 const productImg = (p, colorKey, key) => IMG(colorsOf(p)[colorKey].img[key]);
