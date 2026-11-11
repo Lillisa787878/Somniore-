@@ -966,3 +966,4 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
 .soon .btn { margin-top: 1.8rem; }
 @media (max-width: 1240px) and (min-width: 901px) { .nav { gap: 1.1rem; } .nav__link { font-size: .85rem; } }
 .hero + .rail { padding-top: clamp(3rem, 5vw, 4.5rem); }
+.guide-banner > img[src*="hero-nordic-window"] { object-position: center 60%; }
