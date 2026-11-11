@@ -3,6 +3,7 @@
    ========================================================= */
 (function () {
   const params = new URLSearchParams(location.search);
+  if (params.get('c') === 'baddpaket') { location.replace('baddpaket.html'); return; }
   const key = COLLECTIONS[params.get('c')] ? params.get('c') : 'alla';
   const col = COLLECTIONS[key];
   const state = {
@@ -17,8 +18,6 @@
   document.getElementById('colCrumb').textContent = col.title;
   document.getElementById('colDesc').textContent = col.desc;
   document.getElementById('colImg').src = IMG(col.img);
-
-  if (col.bundle) document.getElementById('bundleInfo').hidden = false;
 
   const base = PRODUCTS.filter(col.filter);
 
@@ -89,5 +88,5 @@
   });
 
   render();
-  SOM.fadeIn('.more .tile, .bundle-info__items li');
+  SOM.fadeIn('.more .tile');
 })();

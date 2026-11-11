@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bäddpaket — Somniore</title>
+  <meta name="description" content="Bäddpaket i linne och percale — påslakan, lakan, dra-på-lakan och örngott i samma färg, till paketpris.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=40">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="bp-page">
+    <!-- Sidhuvud som Parachute: liten bild, stor rubrik, kort text -->
+    <section class="bp-head">
+      <div class="bp-head__img"><img src="assets/img/percale-grey-dark-wall.jpg" alt="Bäddad säng i ljusgrå percale"></div>
+      <div class="bp-head__copy">
+        <h1 class="bp-head__title">Bäddpaket<sup id="bpCount"></sup></h1>
+        <div class="bp-head__bottom">
+          <p class="bp-head__text">Allt du behöver för en färdigbäddad säng — i ett enkelt köp. Varje paket samlar påslakan, lakan, dra-på-lakan och örngott i samma material och färgbad, till paketpris.</p>
+          <nav class="bp-head__links" aria-label="Genvägar">
+            <a href="#" data-mat="linne">Bäddpaket i linne</a>
+            <a href="#" data-mat="percale">Bäddpaket i percale</a>
+            <a href="kollektion.html?c=lakanset">Tillbaka till lakanset</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter -->
+    <section class="bp-bar">
+      <div class="chips" id="bpChips">
+        <button class="chip active" data-v="alla">Alla</button>
+        <button class="chip" data-v="linne">Linne</button>
+        <button class="chip" data-v="percale">Percale</button>
+        <button class="chip" data-v="stort">Stora paket</button>
+      </div>
+      <span class="filters__count" id="bpShown"></span>
+    </section>
+
+    <!-- Ett kort per paket och färg -->
+    <section class="bp-grid" id="bpGrid"></section>
+
+    <!-- Vad ingår -->
+    <section class="bp-included">
+      <h2 class="h-section">Det här ingår.</h2>
+      <ul>
+        <li><b>Påslakan</b><span>Dold knäppning och inre band som håller täcket på plats.</span></li>
+        <li><b>Lakan</b><span>Generös längd att stoppa in runt madrassen.</span></li>
+        <li><b>Dra-på-lakan</b><span>Djup kant och resår runt om — sitter slätt natt efter natt.</span></li>
+        <li><b>Örngott</b><span>Två i bäddpaketet, fyra i det stora paketet.</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js?v=41"></script>
+  <script src="assets/js/layout.js?v=40"></script>
+  <script src="assets/js/bundles.js?v=40"></script>
+</body>
+</html>
