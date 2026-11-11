@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produkt — Somniore</title>
+  <meta name="description" content="Sängkläder i tvättat linne och bomullspercale från Somniore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=34">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="pd-page">
+    <nav class="crumbs pd-crumbs" id="crumbs" aria-label="Brödsmulor"></nav>
+
+    <!-- ============ Köpdel ============ -->
+    <section class="pd">
+      <div class="pd__media">
+        <div class="pd__thumbs" id="thumbs"></div>
+        <div class="pd__main">
+          <img id="mainImg" src="" alt="">
+          <button class="pd__nav pd__nav--prev" id="imgPrev" aria-label="Föregående bild"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="pd__nav pd__nav--next" id="imgNext" aria-label="Nästa bild"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+          <span class="pd__counter" id="imgCounter"></span>
+        </div>
+      </div>
+
+      <div class="pd__info">
+        <p class="pd__tag" id="pTag" hidden></p>
+        <h1 class="pd__title" id="pTitle"></h1>
+        <p class="pd__origin"><em>Vävt i Portugal</em> <span>|</span> <span id="pSpec"></span></p>
+        <p class="pd__price" id="pPrice"></p>
+        <p class="pd__lead" id="pLead"></p>
+
+        <div class="pd__opt">
+          <p class="pd__label"><span>Färg:</span> <strong id="pColorName"></strong></p>
+          <div class="pd__swatches" id="pSwatches"></div>
+        </div>
+
+        <div class="pd__opt" id="typeOpt" hidden>
+          <p class="pd__label"><span>Typ</span></p>
+          <div class="pd__boxes pd__boxes--2" id="pTypes"></div>
+        </div>
+
+        <div class="pd__opt">
+          <div class="pd__label-row">
+            <p class="pd__label"><span>Storlek:</span> <strong id="pSizeName">Välj storlek</strong></p>
+            <a href="kundservice.html#storlekar" class="pd__guide">Storleksguide</a>
+          </div>
+          <div class="pd__boxes" id="pSizes"></div>
+        </div>
+
+        <div class="pd__buy">
+          <div class="qty" aria-label="Antal">
+            <button id="qtyMinus" aria-label="Minska">−</button>
+            <span id="qty">1</span>
+            <button id="qtyPlus" aria-label="Öka">+</button>
+          </div>
+          <button class="pd__add" id="addBtn">Lägg i varukorg</button>
+        </div>
+        <p class="pd__error" id="sizeError" role="alert"></p>
+        <p class="pd__ship"><span>Fri frakt</span> 30 dagars öppet köp · Leverans 2–5 arbetsdagar</p>
+        <p class="pd__club"><a href="konto.html">Somniore Club</a> · Samla 1 poäng per krona på köpet</p>
+
+        <div class="pd__acc" id="accordion"></div>
+      </div>
+    </section>
+
+    <!-- ============ Tre fördelar ============ -->
+    <section class="pd-benefits" id="benefits"></section>
+
+    <!-- ============ Hantverk ============ -->
+    <section class="pd-maker">
+      <div class="pd-maker__big"><img src="assets/img/forest-sheet.jpg" alt="Vitt linne som torkar i vinden bland björkar" loading="lazy"></div>
+      <div class="pd-maker__side">
+        <div class="pd-maker__small"><img src="assets/img/linen-folded.jpg" alt="Vikt linne med olivkvist" loading="lazy"></div>
+        <p class="pd-eyebrow">Vävt i Portugal</p>
+        <h2 class="pd-maker__title">Från Guimarães</h2>
+        <p>I Guimarães, Portugals textilhjärta, har kunnandet gått i arv i generationer. Där vävs varje Somniore-set — med tid, omsorg och material som håller i många år.</p>
+        <a href="om-oss.html#hantverk" class="pd-btn">Om vårt hantverk</a>
+      </div>
+    </section>
+
+    <!-- ============ Flikar ============ -->
+    <section class="pd-tabs">
+      <div class="pd-tabs__nav" role="tablist">
+        <button class="active" role="tab" data-tab="frakt">Frakt &amp; returer</button>
+        <button role="tab" data-tab="detaljer">Detaljer</button>
+        <button role="tab" data-tab="skotsel">Skötselråd</button>
+      </div>
+      <div class="pd-tabs__panel" id="tabPanel"></div>
+    </section>
+
+    <!-- ============ Inspiration ============ -->
+    <section class="pd-insp">
+      <h2 class="pd-section-title"><span>Inspiration</span></h2>
+      <div class="pd-insp__grid" id="insp"></div>
+    </section>
+
+    <!-- ============ Köps ofta tillsammans ============ -->
+    <section class="pd-related">
+      <h2 class="pd-section-title"><span>Köps ofta tillsammans</span></h2>
+      <div class="grid grid--4" id="related"></div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js?v=33"></script>
+  <script src="assets/js/layout.js?v=33"></script>
+  <script src="assets/js/product.js?v=33"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sängkläder — Somniore</title>
+  <meta name="description" content="Sängkläder i tvättat linne och bomullspercale från Somniore.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=34">
+</head>
+<body class="has-hero is-top">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="hero hero--page">
+      <img class="hero__img" id="colImg" src="assets/img/hero-linen-beige.jpg" alt="">
+      <div class="hero__overlay"></div>
+      <div class="page-hero__copy">
+        <nav class="crumbs crumbs--light" aria-label="Brödsmulor"><a href="index.html">Hem</a> <span>/</span> <span id="colCrumb">Sängkläder</span></nav>
+        <h1 class="page-hero__title" id="colTitle">Alla sängkläder</h1>
+        <p class="page-hero__text" id="colDesc"></p>
+      </div>
+    </section>
+
+    <section class="filters" id="filters">
+      <div class="filters__left">
+        <div class="chips" id="chips"></div>
+        <div class="color-filter" id="colorFilter"></div>
+      </div>
+      <div class="filters__right">
+        <span id="count" class="filters__count"></span>
+        <label class="sort">
+          <span class="sr-only">Sortera</span>
+          <select id="sort">
+            <option value="featured">Sortera: Utvalda</option>
+            <option value="name">Sortera: Namn A–Ö</option>
+            <option value="material">Sortera: Material</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="grid" id="grid"></section>
+    <div class="grid-empty" id="empty" hidden>
+      <p>Inga produkter matchar ditt val.</p>
+      <button class="text-link" id="resetFilters">Rensa filter</button>
+    </div>
+
+    <section class="block more">
+      <div class="block__head">
+        <h2 class="h-section">Upptäck mer.</h2>
+      </div>
+      <div class="tiles tiles--4">
+        <a href="kollektion.html?c=linne" class="tile"><img src="assets/img/linen-beige-window.jpg" alt="" loading="lazy"><span class="label">Linne</span></a>
+        <a href="kollektion.html?c=percale" class="tile"><img src="assets/img/percale-white-window.jpg" alt="" loading="lazy"><span class="label">Percale</span></a>
+        <a href="kollektion.html?c=lakanset" class="tile"><img src="assets/img/linen-set-room.jpg" alt="" loading="lazy"><span class="label">Lakanset</span></a>
+        <a href="kollektion.html?c=paslakanset" class="tile"><img src="assets/img/percale-blue-candle.jpg" alt="" loading="lazy"><span class="label">Påslakanset</span></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js?v=33"></script>
+  <script src="assets/js/layout.js?v=33"></script>
+  <script src="assets/js/collection.js?v=33"></script>
+</body>
+</html>

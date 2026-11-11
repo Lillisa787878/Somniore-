@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kundservice — Somniore</title>
+  <meta name="description" content="Frågor om frakt, returer, skötsel och storlekar — Somniore kundservice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=34">
+</head>
+<body class="">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-head">
+      <nav class="crumbs" aria-label="Brödsmulor"><a href="index.html">Hem</a> <span>/</span> <span>Kundservice</span></nav>
+      <h1 class="page-head__title">Kundservice</h1>
+      <p class="page-head__text">Vi hjälper dig gärna. Hittar du inte svaret här — hör av dig så återkommer vi inom en arbetsdag.</p>
+    </section>
+
+    <section class="service">
+      <aside class="service__contact">
+        <h2>Kontakta oss</h2>
+        <p>E-post<br><a href="mailto:hej@somniore.se">hej@somniore.se</a></p>
+        <p>Vardagar 9–16</p>
+        <p>Somniore AB<br>Sverige</p>
+      </aside>
+      <div class="service__faq">
+        <h2 class="service__group" id="frakt">Frakt &amp; leverans</h2>
+        <details><summary>Vad kostar frakten?</summary><div><p>Fri frakt på alla beställningar inom Sverige.</p></div></details>
+        <details><summary>Hur lång är leveranstiden?</summary><div><p>Normalt 2–5 arbetsdagar inom Sverige.</p></div></details>
+
+        <h2 class="service__group" id="returer">Returer</h2>
+        <details><summary>Kan jag ångra mitt köp?</summary><div><p>Ja, du har 30 dagars öppet köp. Sov på saken — passar det inte returnerar du enkelt.</p></div></details>
+        <details><summary>Hur gör jag en retur?</summary><div><p>Kontakta oss med ditt ordernummer så skickar vi en returetikett.</p></div></details>
+
+        <h2 class="service__group" id="skotsel">Skötselråd</h2>
+        <details><summary>Hur tvättar jag linne?</summary><div><p>Maskintvätt 40 °C med likfärgat. Torktumla på låg värme eller häng på tork.</p></div></details>
+        <details><summary>Hur tvättar jag percale?</summary><div><p>Maskintvätt 60 °C. Torktumla på låg värme. Stryk på hög värme för extra krisp.</p></div></details>
+        <details><summary>Krymper sängkläderna?</summary><div><p>Alla våra tyger är förtvättade för att minimera krympning.</p></div></details>
+
+        <h2 class="service__group" id="storlekar">Storleksguide</h2>
+        <table class="size-table"><tbody><tr><th>Påslakan</th><td>150×200 · 150×210 · 220×220 · 240×220</td></tr><tr><th>Lakan</th><td>150×260 · 240×260 · 270×270</td></tr><tr><th>Dra-på-lakan</th><td>90×200 · 120×200 · 140×200 · 160×200 · 180×200</td></tr><tr><th>Örngott</th><td>50×60 · 50×70 · 65×65</td></tr><tr><th>Lakanset</th><td>90×200 · 140×200 · 160×200 · 180×200 (madrassmått)</td></tr><tr><th>Påslakanset</th><td>150×210 · 220×220 · 240×220</td></tr></tbody></table>
+        <p class="size-note">Alla mått i centimeter.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js?v=33"></script>
+  <script src="assets/js/layout.js?v=33"></script>
+  <script>SOM.fadeIn('.service__faq details');</script>
+</body>
+</html>
