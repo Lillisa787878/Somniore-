@@ -16,6 +16,7 @@
   document.title = `${col.title} — Somniore`;
   document.getElementById('colTitle').textContent = col.title;
   document.getElementById('colCrumb').textContent = col.title;
+  if (col.parent) document.getElementById('colCrumb').insertAdjacentHTML('beforebegin', `<a href="kollektion.html?c=${col.parent}">${COLLECTIONS[col.parent].title}</a> <span>/</span> `);
   document.getElementById('colDesc').textContent = col.desc;
   document.getElementById('colImg').src = IMG(col.img);
 

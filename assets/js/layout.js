@@ -92,6 +92,24 @@
         <span class="mega__feature-title">Mörka kvällar.<br>Svala lakan.</span>
         <span class="mega__feature-link">→ Shoppa Midnatt</span>
       </a>`,
+    bad: `
+      <div class="mega__col">
+        ${megaHead('Bad', catLink('bad'))}
+        <a href="${catLink('handdukar')}">Handdukar</a>
+        <a href="${catLink('badlakan')}">Badlakan</a>
+        <a href="${catLink('morgonrockar')}">Morgonrockar</a>
+        <a href="${catLink('badmattor')}">Badmattor</a>
+      </div>
+      <div class="mega__col mega__col--text">
+        <span class="mega__head mega__head--plain">Kommer snart</span>
+        <p>Handdukar och morgonrockar i samma nordiska anda som våra sängkläder — mjuka, naturliga och gjorda för att hålla.</p>
+        <a href="${catLink('bad')}" class="mega__more">Få besked först →</a>
+      </div>
+      <a class="mega__feature" href="${catLink('bad')}">
+        <img src="assets/img/white-sheet-line.jpg" alt="">
+        <span class="mega__feature-title">Mjukt efter badet.</span>
+        <span class="mega__feature-link">→ Kommer snart</span>
+      </a>`,
   };
 
   /* ---------- Sidhuvud ---------- */
@@ -107,7 +125,7 @@
         <a href="${catLink('bastsaljare')}" class="nav__link">Bästsäljare</a>
         <a href="${catLink('nyheter')}" class="nav__link">Nyheter</a>
         <div class="nav__item" data-mega="sangklader"><a href="${catLink('alla')}" class="nav__link">Sängkläder</a></div>
-        <a href="${catLink('bad')}" class="nav__link">Bad &amp; Morgonrockar</a>
+        <div class="nav__item" data-mega="bad"><a href="${catLink('bad')}" class="nav__link">Bad</a></div>
       </nav>
       <a href="index.html" class="logo" aria-label="Somniore – till startsidan">SOMNIORE</a>
       <div class="tools">
@@ -143,7 +161,13 @@
             <a href="${catLink('alla')}" class="drawer__all">Visa alla sängkläder</a>
           </div>
         </details>
-        <a href="${catLink('bad')}">Bad &amp; Morgonrockar</a>
+        <details><summary>Bad</summary>
+          <div class="drawer__sub">
+            <p>Kommer snart</p>
+            <a href="${catLink('handdukar')}">Handdukar</a><a href="${catLink('badlakan')}">Badlakan</a><a href="${catLink('morgonrockar')}">Morgonrockar</a><a href="${catLink('badmattor')}">Badmattor</a>
+            <a href="${catLink('bad')}" class="drawer__all">Allt inom bad</a>
+          </div>
+        </details>
         <a href="material.html">Våra material</a>
         <a href="om-oss.html">Om Somniore</a>
       </nav>

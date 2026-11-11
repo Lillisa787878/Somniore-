@@ -144,7 +144,11 @@ const COLLECTIONS = {
   drapa:       { title: 'Dra-på-lakan', desc: 'Djupa dra-på-lakan som sitter slätt och stramt.', img: 'percale-white-fitted.jpg', filter: p => p.cat === 'drapa' },
   orngott:     { title: 'Örngott', desc: 'Örngott i 2-pack — i linne eller percale med oxfordkant.', img: 'percale-beige-pillow.jpg', filter: p => p.cat === 'orngott' },
   lakanset:    { title: 'Lakanset', desc: 'Lakan, dra-på-lakan och örngott — samlat i ett set.', img: 'linen-set-room.jpg', filter: p => p.cat === 'lakanset' },
-  bad:         { title: 'Bad & Morgonrockar', desc: 'Handdukar och morgonrockar i samma nordiska anda — mjuka, naturliga och gjorda för att hålla. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true },
+  bad:          { title: 'Bad', desc: 'Handdukar, badlakan och morgonrockar i samma nordiska anda — mjuka, naturliga och gjorda för att hålla. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true },
+  handdukar:    { title: 'Handdukar', desc: 'Mjuka, tunga handdukar som torkar snabbt. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
+  badlakan:     { title: 'Badlakan', desc: 'Generösa badlakan att svepa in sig i. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
+  morgonrockar: { title: 'Morgonrockar', desc: 'Lätta morgonrockar för långsamma morgnar. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
+  badmattor:    { title: 'Badmattor', desc: 'Badmattor i naturliga material. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
   baddpaket:   { title: 'Bäddpaket', desc: 'Hela sängen i ett köp — påslakan, lakan, dra-på-lakan och örngott i samma färg och material, till paketpris.', img: 'linen-beige-bed2.jpg', filter: p => p.cat === 'baddpaket', bundle: true },
   paslakanset: { title: 'Påslakanset', desc: 'Påslakan och två örngott. Den enklaste vägen till en färdigbäddad säng.', img: 'percale-blue-candle.jpg', filter: p => p.cat === 'paslakanset' },
 };
