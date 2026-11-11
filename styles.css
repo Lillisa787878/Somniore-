@@ -904,3 +904,17 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
 
 /* Produktfoton (packshots): zooma in så sängkläderna fyller rutan */
 .product__media img.main[src*="/p/"] { transform: scale(1.28); transform-origin: 50% 54%; }
+
+/* ---------- Bäddpaket: vad ingår ---------- */
+.bundle-info { padding: clamp(3rem, 6vw, 5rem) var(--inset) clamp(2rem, 4vw, 3rem); }
+.bundle-info__head { max-width: 38rem; margin-bottom: 2.4rem; }
+.bundle-info__kicker { font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--petrol); margin-bottom: .8rem; }
+.bundle-info__head > p:last-child { color: var(--soft); margin-top: .9rem; }
+.bundle-info__items { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); counter-reset: b; }
+.bundle-info__items li { position: relative; display: flex; flex-direction: column; gap: .2rem; font-size: .85rem; color: var(--soft); counter-increment: b; }
+.bundle-info__items img { aspect-ratio: 1; object-fit: cover; background: var(--card); margin-bottom: .8rem; }
+.bundle-info__items li::before { content: counter(b); position: absolute; top: .7rem; left: .7rem; width: 26px; height: 26px; border-radius: 50%; background: var(--offwhite); color: var(--ink); font-size: .75rem; display: grid; place-items: center; }
+.bundle-info__items b { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; color: var(--ink); }
+.bundle-info__perks { list-style: none; padding: 1.2rem 0 0; margin: 2rem 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: .6rem 2rem; font-size: .85rem; }
+.bundle-info__perks li::before { content: "✓"; color: var(--petrol); margin-right: .5rem; }
+@media (max-width: 900px) { .bundle-info__items { grid-template-columns: 1fr 1fr; } }

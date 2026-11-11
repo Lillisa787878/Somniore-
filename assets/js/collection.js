@@ -18,6 +18,8 @@
   document.getElementById('colDesc').textContent = col.desc;
   document.getElementById('colImg').src = IMG(col.img);
 
+  if (col.bundle) document.getElementById('bundleInfo').hidden = false;
+
   const base = PRODUCTS.filter(col.filter);
 
   /* Chips: kategorier i materialkollektioner, annars material */
@@ -87,5 +89,5 @@
   });
 
   render();
-  SOM.fadeIn('.more .tile');
+  SOM.fadeIn('.more .tile, .bundle-info__items li');
 })();

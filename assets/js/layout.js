@@ -75,6 +75,7 @@
         ${megaHead('Utvalt', catLink('bastsaljare'))}
         <a href="${catLink('bastsaljare')}">Bästsäljare</a>
         <a href="${catLink('nyheter')}">Nyheter</a>
+        <a href="${catLink('baddpaket')}">Bäddpaket</a>
         <a href="material.html">Våra material</a>
       </div>
       <a class="mega__feature" href="${productUrl(productById('linne-paslakan'), 'midnatt')}">
@@ -130,6 +131,7 @@
       <button class="burger" id="burger" aria-label="Meny" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav" aria-label="Huvudmeny">
         <a href="${catLink('bastsaljare')}" class="nav__link">Bästsäljare</a>
+        <a href="${catLink('baddpaket')}" class="nav__link">Bäddpaket</a>
         <div class="nav__item" data-mega="sangklader"><a href="${catLink('alla')}" class="nav__link">Sängkläder</a></div>
         <div class="nav__item" data-mega="linne"><a href="${catLink('linne')}" class="nav__link">Linne</a></div>
         <div class="nav__item" data-mega="percale"><a href="${catLink('percale')}" class="nav__link">Percale</a></div>
@@ -156,6 +158,7 @@
       </div>
       <nav class="drawer__nav">
         <a href="${catLink('bastsaljare')}">Bästsäljare</a>
+        <a href="${catLink('baddpaket')}">Bäddpaket</a>
         <details><summary>Sängkläder</summary>
           <div>${Object.entries(CATEGORIES).map(([k, c]) => `<a href="${catLink(k)}">${c.plural}</a>`).join('')}<a href="${catLink('alla')}">Visa alla</a></div>
         </details>
@@ -211,7 +214,7 @@
         <p class="news__legal">Du får ett mejl där du bekräftar din adress. Avregistrera dig när du vill.</p>
       </div>
       <div class="footer__cols">
-        <div><h4>Shoppa</h4><a href="${catLink('linne')}">Linne</a><a href="${catLink('percale')}">Percale</a><a href="${catLink('alla')}">Alla sängkläder</a><a href="${catLink('bastsaljare')}">Bästsäljare</a></div>
+        <div><h4>Shoppa</h4><a href="${catLink('baddpaket')}">Bäddpaket</a><a href="${catLink('linne')}">Linne</a><a href="${catLink('percale')}">Percale</a><a href="${catLink('alla')}">Alla sängkläder</a><a href="${catLink('bastsaljare')}">Bästsäljare</a></div>
         <div><h4>Kundservice</h4><a href="konto.html">Mitt konto</a><a href="konto.html#poang">Somniore Club</a><a href="kundservice.html">Kontakta oss</a><a href="kundservice.html#frakt">Frakt &amp; leverans</a><a href="kundservice.html#returer">Returer</a><a href="kundservice.html#skotsel">Skötselråd</a><a href="kundservice.html#storlekar">Storleksguide</a></div>
         <div><h4>Somniore</h4><a href="om-oss.html">Om oss</a><a href="material.html">Våra material</a><a href="om-oss.html#hantverk">Hantverk</a><a href="#">Instagram</a></div>
       </div>
