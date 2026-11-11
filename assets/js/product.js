@@ -129,6 +129,22 @@
     setTimeout(SOM.openCart, 350);
   });
 
+  /* ---------- Fast köpknapp längst ner på mobil (som Parachute) ---------- */
+  const sticky = document.createElement('div');
+  sticky.className = 'pd-sticky';
+  sticky.innerHTML = `<div class="pd-sticky__info"><b>${p.name}</b><span id="stickyMeta"></span></div><button class="pd-sticky__btn">Lägg i varukorg</button>`;
+  document.body.appendChild(sticky);
+  const updateSticky = () => { $('stickyMeta').textContent = `${colorsOf(p)[state.color].name} · ${state.size ? state.size + ' cm' : 'Välj storlek'}`; };
+  updateSticky();
+  document.addEventListener('click', e => { if (e.target.closest('#pSwatches, #pSizes')) setTimeout(updateSticky, 0); });
+  sticky.querySelector('button').addEventListener('click', () => {
+    if (!state.size) { $('pSizes').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    $('addBtn').click();
+  });
+  new IntersectionObserver(([e]) => {
+    sticky.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0);
+  }).observe($('addBtn'));
+
   /* ---------- Utfällbara sektioner ---------- */
   const includes = p.includes
     ? `<p class="pd-acc__sub">Setet innehåller:</p><ul>${p.includes.map(i => `<li>${i}</li>`).join('')}</ul>` : '';

@@ -99,7 +99,10 @@
   <div class="announce"><p>Fri frakt på alla beställningar <span>|</span> <b class="more">30 dagars öppet köp</b></p></div>
   <header class="header" id="header">
     <div class="header__bar">
-      <button class="burger" id="burger" aria-label="Meny" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="m-left">
+        <button class="burger" id="burger" aria-label="Meny" aria-expanded="false"><span></span><span></span><span></span></button>
+        <button class="tool m-search" aria-label="Sök">${ICON.search}</button>
+      </div>
       <nav class="nav" aria-label="Huvudmeny">
         <a href="${catLink('bastsaljare')}" class="nav__link">Bästsäljare</a>
         <a href="${catLink('nyheter')}" class="nav__link">Nyheter</a>
@@ -112,8 +115,8 @@
           <a href="material.html" class="nav__link">Våra material</a>
           <a href="om-oss.html" class="nav__link">Om Somniore</a>
         </nav>
-        <button class="tool" aria-label="Sök">${ICON.search}</button>
-        <a class="tool hide-m acc-link${me ? ' is-in' : ''}" href="konto.html" aria-label="${me ? 'Mitt konto' : 'Logga in'}" title="${me ? 'Mitt konto · ' + (me.points || 0) + ' poäng' : 'Logga in'}">${ICON.user}</a>
+        <button class="tool hide-m" aria-label="Sök">${ICON.search}</button>
+        <a class="tool acc-link${me ? ' is-in' : ''}" href="konto.html" aria-label="${me ? 'Mitt konto' : 'Logga in'}" title="${me ? 'Mitt konto · ' + (me.points || 0) + ' poäng' : 'Logga in'}">${ICON.user}</a>
         <button class="tool cart-btn" id="cartBtn" aria-label="Varukorg">${ICON.bag}<span class="cart-count" id="cartCount">0</span></button>
       </div>
     </div>
@@ -130,16 +133,24 @@
         <a href="${catLink('bastsaljare')}">Bästsäljare</a>
         <a href="${catLink('nyheter')}">Nyheter</a>
         <details><summary>Sängkläder</summary>
-          <div>
-            <a href="${catLink('lakanset')}">Lakanset</a><a href="baddpaket.html">Bäddpaket</a><a href="${catLink('paslakanset')}">Påslakanset</a>
-            <a href="${catLink('paslakan')}">Påslakan</a><a href="${catLink('lakan')}">Lakan</a><a href="${catLink('drapa')}">Dra-på-lakan</a><a href="${catLink('orngott')}">Örngott</a>
-            <a href="${catLink('percale')}">Allt i percale</a><a href="${catLink('linne')}">Allt i linne</a><a href="${catLink('alla')}">Visa alla</a>
+          <div class="drawer__sub">
+            <p>Lakan</p>
+            <a href="${catLink('lakanset')}">Lakanset</a><a href="baddpaket.html">Bäddpaket</a><a href="${catLink('paslakanset')}">Påslakanset</a><a href="${catLink('drapa')}">Dra-på-lakan</a><a href="${catLink('lakan')}">Lakan styckvis</a>
+            <p>Bäddning</p>
+            <a href="${catLink('paslakan')}">Påslakan</a><a href="${catLink('orngott')}">Örngott</a>
+            <p>Material</p>
+            <a href="${catLink('percale')}">Percale <small>${MATERIALS.percale.short}</small></a><a href="${catLink('linne')}">Linne <small>${MATERIALS.linne.short}</small></a>
+            <a href="${catLink('alla')}" class="drawer__all">Visa alla sängkläder</a>
           </div>
         </details>
         <a href="${catLink('bad')}">Bad &amp; Morgonrockar</a>
         <a href="material.html">Våra material</a>
         <a href="om-oss.html">Om Somniore</a>
       </nav>
+      <div class="drawer__tiles">
+        <a href="baddpaket.html"><img src="assets/img/percale-grey-dark-wall.jpg" alt="" loading="lazy"><span>Bäddpaket</span></a>
+        <a href="${catLink('linne')}"><img src="assets/img/linen-green-bed.jpg" alt="" loading="lazy"><span>Tvättat linne</span></a>
+      </div>
       <div class="drawer__foot">
         <a href="konto.html">${me ? 'Mitt konto · ' + (me.points || 0) + ' poäng' : 'Logga in / Skapa konto'}</a>
         <a href="kundservice.html">Kundservice</a>
@@ -372,6 +383,12 @@
     card.querySelector('img.main').src = productImg(p, sw.dataset.color, cat.card);
     card.querySelector('img.alt').src = productImg(p, sw.dataset.color, cat.hover);
     card.querySelectorAll('a').forEach(a => a.href = productUrl(p, sw.dataset.color));
+  });
+
+  /* Sidfot: fällbara listor på mobil */
+  document.querySelectorAll('.footer__cols h4').forEach(h => {
+    h.setAttribute('role', 'button'); h.tabIndex = 0;
+    h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
   });
 
   updateCount();

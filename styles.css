@@ -967,3 +967,63 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
 @media (max-width: 1240px) and (min-width: 901px) { .nav { gap: 1.1rem; } .nav__link { font-size: .85rem; } }
 .hero + .rail { padding-top: clamp(3rem, 5vw, 4.5rem); }
 .guide-banner > img[src*="hero-nordic-window"] { object-position: center 60%; }
+
+/* =========================================================
+   MOBIL — som Parachute
+   ========================================================= */
+.m-left { display: none; }
+.pd-sticky { display: none; }
+@media (max-width: 900px) {
+  /* Sidhuvud: alltid ljust, meny + sök till vänster, konto + varukorg till höger */
+  body.is-top .header:not(:hover):not(.mega-open) { background: var(--offwhite); color: var(--ink); border-color: var(--line); }
+  .m-left { display: flex; align-items: center; gap: .1rem; margin-left: -6px; }
+  .tools { gap: 0; margin-right: -6px; }
+  .tools .tool.hide-m { display: none; }
+  .acc-link.is-in::after { top: 7px; right: 5px; }
+  .hero { height: calc(100svh - 34px); min-height: 520px; max-height: 760px; }
+  .hero__title { font-size: clamp(3.2rem, 15vw, 4.2rem); }
+
+  /* Bästsäljare: drygt ett och ett halvt kort syns, svep utan pilar */
+  .rail__track { grid-auto-columns: 64%; }
+  .rail .rail__arrows { display: none; }
+  .rail__head { margin-bottom: .9rem; }
+  .btn.rail__cta { display: block; text-align: center; margin-left: var(--pad); margin-right: var(--pad); }
+  .product__name { font-size: 1.08rem; }
+
+  /* Mobilmeny: helskärm, raka listor med pilar */
+  .drawer__panel { width: 100vw; }
+  .drawer__nav { padding: 0; }
+  .drawer__nav > a, .drawer__nav summary { font-family: var(--sans); font-size: 1.05rem; padding: 1.05rem var(--pad); border-bottom: 1px solid var(--line); }
+  .drawer__nav > a::after { content: "›"; float: right; font-size: 1.3rem; line-height: 1; color: var(--soft); }
+  .drawer__nav summary::after { font-size: 1.2rem; line-height: 1; color: var(--soft); }
+  .drawer__sub { display: flex; flex-direction: column; padding: .4rem var(--pad) 1.2rem !important; gap: 0 !important; background: var(--beige); }
+  .drawer__sub p { font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--petrol); margin: 1rem 0 .3rem; }
+  .drawer__sub a { padding: .45rem 0; font-size: .98rem; }
+  .drawer__sub small { color: var(--soft); font-size: .82rem; margin-left: .3rem; }
+  .drawer__sub .drawer__all { margin-top: .8rem; text-decoration: underline; text-underline-offset: 4px; }
+  .drawer__tiles { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); padding: 1.2rem var(--pad) .4rem; }
+  .drawer__tiles a { position: relative; display: block; aspect-ratio: 4/5; overflow: hidden; background: var(--card); }
+  .drawer__tiles img { height: 100%; object-fit: cover; }
+  .drawer__tiles span { position: absolute; left: .6rem; bottom: .6rem; background: var(--offwhite); font-size: .8rem; padding: .5rem .7rem; border-radius: 2px; }
+  .drawer__foot { border-top: 0; }
+
+  /* Fast köpknapp på produktsidan */
+  .pd-sticky { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; align-items: center; gap: .8rem; padding: .7rem var(--pad) calc(.7rem + env(safe-area-inset-bottom)); background: var(--offwhite); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px -18px rgba(20,28,30,.35); transform: translateY(110%); transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  .pd-sticky.show { transform: none; }
+  .pd-sticky__info { flex: 1; min-width: 0; display: flex; flex-direction: column; font-size: .8rem; color: var(--soft); }
+  .pd-sticky__info b { font-family: var(--serif); font-weight: 500; font-size: 1.05rem; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pd-sticky__btn { background: var(--navy); color: var(--beige); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: .95rem 1.1rem; border-radius: 3px; white-space: nowrap; }
+}
+@media (max-width: 700px) {
+  /* Sidfot: fällbara listor */
+  .footer__cols { grid-template-columns: 1fr; gap: 0; margin-top: 1rem; }
+  .footer__cols div { gap: 0; border-top: 1px solid rgba(245,241,232,.16); }
+  .footer__cols div:last-child { border-bottom: 1px solid rgba(245,241,232,.16); }
+  .footer__cols h4 { margin: 0; padding: 1.05rem 0; font-size: .95rem; color: var(--beige); cursor: pointer; display: flex; justify-content: space-between; }
+  .footer__cols h4::after { content: "+"; font-weight: 300; font-size: 1.2rem; line-height: 1; }
+  .footer__cols div.open h4::after { content: "−"; }
+  .footer__cols div a { display: none; padding: .4rem 0; }
+  .footer__cols div.open a { display: block; }
+  .footer__cols div.open { padding-bottom: 1rem; }
+  .footer__bottom { flex-direction: column; gap: .5rem; }
+}
