@@ -50,20 +50,16 @@ const MATERIALS = {
 };
 
 const CATEGORIES = {
-  paslakan:    { name: 'Påslakan',     plural: 'Påslakan',     card: 'stack',   hover: 'bed',    gallery: ['bed', 'stack', 'bed2', 'detail', 'room'] },
   lakan:       { name: 'Lakan',        plural: 'Lakan',        card: 'stack',   hover: 'bed2',   gallery: ['stack', 'bed2', 'detail', 'bed'] },
   drapa:       { name: 'Dra-på-lakan', plural: 'Dra-på-lakan', card: 'stack',   hover: 'detail', gallery: ['stack', 'detail', 'bed', 'bed2'] },
-  orngott:     { name: 'Örngott',      plural: 'Örngott',      card: 'pillows', hover: 'bed',    gallery: ['pillows', 'bed', 'detail', 'bed2'] },
   lakanset:    { name: 'Lakanset',     plural: 'Lakanset',     card: 'stack',   hover: 'room',   gallery: ['stack', 'room', 'bed', 'pillows', 'detail'] },
   paslakanset: { name: 'Påslakanset',  plural: 'Påslakanset',  card: 'stack',   hover: 'bed',    gallery: ['bed', 'stack', 'pillows', 'bed2', 'room'] },
   baddpaket:   { name: 'Bäddpaket',    plural: 'Bäddpaket',    card: 'stack',   hover: 'room',   gallery: ['room', 'stack', 'bed', 'pillows', 'bed2', 'detail'] },
 };
 
 const SIZES = {
-  paslakan: ['150×200', '150×210', '220×220', '240×220'],
   lakan: ['150×260', '240×260', '270×270'],
   drapa: ['90×200', '120×200', '140×200', '160×200', '180×200'],
-  orngott: ['50×60', '50×70', '65×65'],
   lakanset: ['90×200', '140×200', '160×200', '180×200'],
   paslakanset: ['150×210', '220×220', '240×220'],
   baddpaket: ['90×200', '140×200', '160×200', '180×200'],   // sängens bredd × längd
@@ -71,18 +67,12 @@ const SIZES = {
 
 /* ---------- Produkter ---------- */
 const PRODUCTS = [
-  { id: 'linne-paslakan', hero: 'sand', name: 'Påslakan i linne', material: 'linne', cat: 'paslakan', best: true,
-    desc: 'Ett luftigt påslakan i stentvättat linne med en mjuk, levande yta. Dold knäppning nedtill håller täcket på plats.',
-    details: ['Dold knäppning nedtill', 'Inre hörnband som håller täcket på plats', 'Förtvättat för minimal krympning'] },
   { id: 'linne-lakan', hero: 'mossa', name: 'Lakan i linne', material: 'linne', cat: 'lakan',
     desc: 'Ett generöst överlakan i tvättat linne — svalt om sommaren, ombonat om vintern.',
     details: ['Dubbelvikt fåll', 'Generös längd för att stoppa in', 'Förtvättat för minimal krympning'] },
   { id: 'linne-drapa', hero: 'kritvit', name: 'Dra-på-lakan i linne', material: 'linne', cat: 'drapa',
     desc: 'Dra-på-lakan i tvättat linne med djup kant och resår runt om för en slät, välbäddad säng.',
     details: ['Passar madrasser upp till 35 cm', 'Resår runt om', 'Förtvättat för minimal krympning'] },
-  { id: 'linne-orngott', hero: 'mossa', name: 'Örngott i linne', material: 'linne', cat: 'orngott', isNew: true, pack: '2-pack',
-    desc: 'Två örngott i stentvättat linne med innerficka som håller kudden på plats.',
-    details: ['Säljs i 2-pack', 'Innerficka', 'Förtvättat för minimal krympning'] },
   { id: 'linne-lakanset', hero: 'midnatt', name: 'Lakanset i linne', material: 'linne', cat: 'lakanset', best: true, tag: 'Ny färg',
     desc: 'Allt du behöver för en välbäddad säng i tvättat linne — samlat i ett set.',
     includes: ['1 lakan', '1 dra-på-lakan', '2 örngott'],
@@ -92,23 +82,17 @@ const PRODUCTS = [
     includes: ['1 påslakan', '2 örngott'],
     details: ['Dold knäppning på påslakanet', 'Förtvättat för minimal krympning'] },
 
-  { id: 'percale-paslakan', hero: 'fjord', name: 'Påslakan i percale', material: 'percale', cat: 'paslakan', best: true,
-    desc: 'Ett krispigt, svalt påslakan i kammad bomullspercale med 300 trådars täthet.',
-    details: ['Dold knäppning', 'Inre hörnband', 'Mjuknar för varje tvätt'] },
   { id: 'percale-lakan', hero: 'salvia', name: 'Lakan i percale', material: 'percale', cat: 'lakan',
     desc: 'Ett klassiskt överlakan i percale — slätt, matt och svalt mot huden.',
     details: ['Bred fåll med dekorsöm', 'Generös längd för att stoppa in'] },
   { id: 'percale-drapa', hero: 'vit', name: 'Dra-på-lakan i percale', material: 'percale', cat: 'drapa',
     desc: 'Dra-på-lakan i kammad bomullspercale som sitter slätt och stramt — natt efter natt.',
     details: ['Passar madrasser upp till 35 cm', 'Resår runt om'] },
-  { id: 'percale-orngott', hero: 'vit', name: 'Örngott med oxfordkant', material: 'percale', cat: 'orngott', best: true, tag: 'Bästsäljare', pack: '2-pack',
-    desc: 'Två örngott i percale med klassisk oxfordkant — en tidlös detalj från hotellbäddningens värld.',
-    details: ['Säljs i 2-pack', 'Sydd oxfordkant', 'Innerficka'] },
   { id: 'percale-lakanset', hero: 'havre', name: 'Lakanset i percale', material: 'percale', cat: 'lakanset', best: true,
     desc: 'Lakan, dra-på-lakan och två örngott i krispig percale. Hotellkänsla, hemma.',
     includes: ['1 lakan', '1 dra-på-lakan', '2 örngott med oxfordkant'],
     details: ['Samma bomull och färgbad i alla delar', 'Mjuknar för varje tvätt'] },
-  { id: 'percale-paslakanset', hero: 'ljusgra', name: 'Påslakanset i percale', material: 'percale', cat: 'paslakanset', isNew: true,
+  { id: 'percale-paslakanset', hero: 'fjord', name: 'Påslakanset i percale', material: 'percale', cat: 'paslakanset', best: true, isNew: true,
     desc: 'Påslakan och två örngott med oxfordkant i svalt, krispigt percale.',
     includes: ['1 påslakan', '2 örngott med oxfordkant'],
     details: ['Dold knäppning på påslakanet', 'Mjuknar för varje tvätt'] },
@@ -139,10 +123,8 @@ const COLLECTIONS = {
   nyheter:     { title: 'Nyheter', desc: 'Det senaste från Somniore.', img: 'percale-green-light.jpg', filter: p => p.isNew || p.tag === 'Ny färg' },
   linne:       { title: 'Linne', desc: MATERIALS.linne.about, img: 'linen-beige-window.jpg', filter: p => p.material === 'linne', material: 'linne' },
   percale:     { title: 'Percale', desc: MATERIALS.percale.about, img: 'percale-white-window.jpg', filter: p => p.material === 'percale', material: 'percale' },
-  paslakan:    { title: 'Påslakan', desc: 'Påslakan i tvättat linne och krispig percale.', img: 'linen-green-room.jpg', filter: p => p.cat === 'paslakan' },
   lakan:       { title: 'Lakan', desc: 'Överlakan i linne och percale med generös längd.', img: 'percale-green-folded.jpg', filter: p => p.cat === 'lakan' },
   drapa:       { title: 'Dra-på-lakan', desc: 'Djupa dra-på-lakan som sitter slätt och stramt.', img: 'percale-white-fitted.jpg', filter: p => p.cat === 'drapa' },
-  orngott:     { title: 'Örngott', desc: 'Örngott i 2-pack — i linne eller percale med oxfordkant.', img: 'percale-beige-pillow.jpg', filter: p => p.cat === 'orngott' },
   lakanset:    { title: 'Lakanset', desc: 'Lakan, dra-på-lakan och örngott — samlat i ett set.', img: 'linen-set-room.jpg', filter: p => p.cat === 'lakanset' },
   bad:          { title: 'Bad', desc: 'Handdukar, badlakan och morgonrockar i samma nordiska anda — mjuka, naturliga och gjorda för att hålla. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true },
   handdukar:    { title: 'Handdukar', desc: 'Mjuka, tunga handdukar som torkar snabbt. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
@@ -154,7 +136,10 @@ const COLLECTIONS = {
 
 /* ---------- Hjälpfunktioner ---------- */
 const IMG = path => 'assets/img/' + path;
-const productById = id => PRODUCTS.find(p => p.id === id);
+/* Påslakan och örngott säljs bara tillsammans: gamla länkar leder till påslakanseten */
+const ALIASES = { 'linne-paslakan': 'linne-paslakanset', 'linne-orngott': 'linne-paslakanset', 'percale-paslakan': 'percale-paslakanset', 'percale-orngott': 'percale-paslakanset' };
+const COLLECTION_ALIASES = { paslakan: 'paslakanset', orngott: 'paslakanset' };
+const productById = id => PRODUCTS.find(p => p.id === (ALIASES[id] || id));
 const colorsOf = p => COLORS[p.material];
 const firstColorKey = p => p.hero || Object.keys(colorsOf(p))[0];
 const formatPrice = p => p.price ? p.price.toLocaleString('sv-SE') + ' kr' : 'Pris kommer snart';

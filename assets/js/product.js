@@ -1,5 +1,5 @@
 /* =========================================================
-   SOMNIORE — produktsida (produkt.html?p=linne-paslakan&farg=sand)
+   SOMNIORE — produktsida (produkt.html?p=linne-paslakanset&farg=sand)
    Upplägg inspirerat av The Citizenry: bildgalleri med miniatyrer,
    köpdel med utfällbara sektioner, fördelar, hantverk, flikar.
    ========================================================= */
@@ -90,7 +90,7 @@
   }
 
   /* ---------- Typ: t.ex. endast påslakan / påslakan + örngott ---------- */
-  const PAIRS = { paslakan: 'paslakanset', paslakanset: 'paslakan', lakanset: 'lakan', lakan: 'lakanset' };
+  const PAIRS = { lakanset: 'lakan', lakan: 'lakanset' };
   function renderTypes() {
     const otherCat = PAIRS[p.cat];
     const other = otherCat && PRODUCTS.find(x => x.material === p.material && x.cat === otherCat);

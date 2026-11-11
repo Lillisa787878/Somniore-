@@ -66,10 +66,10 @@
         <a href="${catLink('lakan')}">Lakan styckvis</a>
       </div>
       <div class="mega__col">
-        ${megaHead('Bäddning', catLink('paslakan'))}
-        <a href="${catLink('paslakan')}">Påslakan</a>
-        <a href="${catLink('orngott')}">Örngott</a>
-        <a href="${catLink('paslakanset')}">Påslakan med örngott</a>
+        ${megaHead('Bäddning', catLink('paslakanset'))}
+        <a href="${productUrl(productById('linne-paslakanset'))}">Påslakanset i linne</a>
+        <a href="${productUrl(productById('percale-paslakanset'))}">Påslakanset i percale</a>
+        <a href="${catLink('paslakanset')}">Alla påslakanset</a>
       </div>
       <div class="mega__col">
         ${megaHead('Material', 'material.html')}
@@ -87,7 +87,7 @@
         <a href="baddpaket.html?m=percale">Bäddpaket i percale</a>
         <a href="baddpaket.html?m=linne">Bäddpaket i linne</a>
       </div>
-      <a class="mega__feature" href="${productUrl(productById('linne-paslakan'), 'midnatt')}">
+      <a class="mega__feature" href="${productUrl(productById('linne-paslakanset'), 'midnatt')}">
         <img src="assets/img/linen-blue-dusk.jpg" alt="">
         <span class="mega__feature-title">Mörka kvällar.<br>Svala lakan.</span>
         <span class="mega__feature-link">→ Shoppa Midnatt</span>
@@ -154,7 +154,7 @@
             <p>Lakan</p>
             <a href="${catLink('lakanset')}">Lakanset</a><a href="baddpaket.html">Bäddpaket</a><a href="${catLink('paslakanset')}">Påslakanset</a><a href="${catLink('drapa')}">Dra-på-lakan</a><a href="${catLink('lakan')}">Lakan styckvis</a>
             <p>Bäddning</p>
-            <a href="${catLink('paslakan')}">Påslakan</a><a href="${catLink('orngott')}">Örngott</a>
+            <a href="${productUrl(productById('linne-paslakanset'))}">Påslakanset i linne</a><a href="${productUrl(productById('percale-paslakanset'))}">Påslakanset i percale</a>
             <p>Material</p>
             <a href="${catLink('percale')}">Percale <small>${MATERIALS.percale.short}</small></a><a href="${catLink('linne')}">Linne <small>${MATERIALS.linne.short}</small></a>
             <a href="${catLink('alla')}" class="drawer__all">Visa alla sängkläder</a>

@@ -4,7 +4,8 @@
 (function () {
   const params = new URLSearchParams(location.search);
   if (params.get('c') === 'baddpaket') { location.replace('baddpaket.html'); return; }
-  const key = COLLECTIONS[params.get('c')] ? params.get('c') : 'alla';
+  const want = COLLECTION_ALIASES[params.get('c')] || params.get('c');
+  const key = COLLECTIONS[want] ? want : 'alla';
   const col = COLLECTIONS[key];
   const state = {
     chip: 'alla',                       // material eller kategori
