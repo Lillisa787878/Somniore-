@@ -52,7 +52,7 @@ const MATERIALS = {
 const CATEGORIES = {
   lakan:       { name: 'Lakan',        plural: 'Lakan',        card: 'stack',   hover: 'bed2',   gallery: ['stack', 'bed2', 'detail', 'bed'] },
   drapa:       { name: 'Dra-på-lakan', plural: 'Dra-på-lakan', card: 'stack',   hover: 'detail', gallery: ['stack', 'detail', 'bed', 'bed2'] },
-  orngott:     { name: 'Örngott',      plural: 'Örngott',      card: 'pillows', hover: 'bed',    gallery: ['pillows', 'bed', 'detail', 'bed2'] },
+  orngott:     { name: '2-pack örngott', plural: '2-pack örngott',      card: 'pillows', hover: 'bed',    gallery: ['pillows', 'bed', 'detail', 'bed2'] },
   lakanset:    { name: 'Lakanset',     plural: 'Lakanset',     card: 'stack',   hover: 'room',   gallery: ['stack', 'room', 'bed', 'pillows', 'detail'] },
   paslakanset: { name: 'Påslakanset',  plural: 'Påslakanset',  card: 'stack',   hover: 'bed',    gallery: ['bed', 'stack', 'pillows', 'bed2', 'room'] },
   baddpaket:   { name: 'Bäddpaket',    plural: 'Bäddpaket',    card: 'stack',   hover: 'room',   gallery: ['room', 'stack', 'bed', 'pillows', 'bed2', 'detail'] },
@@ -67,7 +67,6 @@ const SIZES = {
   paslakanset: [
     { t: 'Enkel', d: '150×210 + 1 örngott' },
     { t: 'Dubbel', d: '220×220 + 2 örngott' },
-    { t: 'Dubbel stor', d: '240×220 + 2 örngott' },
   ],
   baddpaket: ['90×200', '140×200', '160×200', '180×200'],   // sängens bredd × längd
 };
@@ -88,7 +87,7 @@ const PRODUCTS = [
     desc: 'Påslakan och örngott i tvättat linne — till enkelsängen med ett örngott, till dubbelsängen med två. Den enklaste vägen till en avslappnad, nordisk säng.',
     includes: ['Enkel: 1 påslakan + 1 örngott', 'Dubbel: 1 dubbelpåslakan + 2 örngott'],
     details: ['Dold knäppning på påslakanet', 'Förtvättat för minimal krympning'] },
-  { id: 'linne-orngott', hero: 'mossa', name: 'Örngott 2-pack i linne', material: 'linne', cat: 'orngott', isNew: true, pack: '2-pack',
+  { id: 'linne-orngott', hero: 'mossa', name: '2-pack örngott i linne', material: 'linne', cat: 'orngott', isNew: true, pack: '2-pack',
     desc: 'Två örngott i stentvättat linne med innerficka som håller kudden på plats.',
     details: ['Säljs i 2-pack', 'Innerficka', 'Förtvättat för minimal krympning'] },
 
@@ -106,7 +105,7 @@ const PRODUCTS = [
     desc: 'Påslakan och örngott med oxfordkant i svalt, krispigt percale — till enkelsängen med ett örngott, till dubbelsängen med två.',
     includes: ['Enkel: 1 påslakan + 1 örngott med oxfordkant', 'Dubbel: 1 dubbelpåslakan + 2 örngott med oxfordkant'],
     details: ['Dold knäppning på påslakanet', 'Mjuknar för varje tvätt'] },
-  { id: 'percale-orngott', hero: 'vit', name: 'Örngott 2-pack med oxfordkant', material: 'percale', cat: 'orngott', tag: 'Bästsäljare', pack: '2-pack',
+  { id: 'percale-orngott', hero: 'vit', name: '2-pack örngott med oxfordkant', material: 'percale', cat: 'orngott', tag: 'Bästsäljare', pack: '2-pack',
     desc: 'Två örngott i percale med klassisk oxfordkant — en tidlös detalj från hotellbäddningens värld.',
     details: ['Säljs i 2-pack', 'Sydd oxfordkant', 'Innerficka'] },
 
@@ -144,7 +143,7 @@ const COLLECTIONS = {
   badlakan:     { title: 'Badlakan', desc: 'Generösa badlakan att svepa in sig i. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
   morgonrockar: { title: 'Morgonrockar', desc: 'Lätta morgonrockar för långsamma morgnar. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },
   baddpaket:   { title: 'Bäddpaket', desc: 'Hela sängen i ett köp — påslakan, lakan, dra-på-lakan och örngott i samma färg och material, till paketpris.', img: 'linen-beige-bed2.jpg', filter: p => p.cat === 'baddpaket', bundle: true },
-  orngott:     { title: 'Örngott', desc: 'Örngott i 2-pack — i tvättat linne eller percale med oxfordkant.', img: 'percale-beige-pillow.jpg', filter: p => p.cat === 'orngott' },
+  orngott:     { title: '2-pack örngott', desc: 'Två örngott i varje förpackning — i tvättat linne eller percale med oxfordkant.', img: 'percale-beige-pillow.jpg', filter: p => p.cat === 'orngott' },
   paslakanset: { title: 'Påslakanset', desc: 'Påslakan och två örngott. Den enklaste vägen till en färdigbäddad säng.', img: 'percale-blue-candle.jpg', filter: p => p.cat === 'paslakanset' },
 };
 
