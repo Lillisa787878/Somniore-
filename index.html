@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=50">
+  <link rel="stylesheet" href="styles.css?v=54">
 </head>
 <body class="has-hero is-top">
 
@@ -23,7 +23,14 @@
       <a href="kollektion.html?c=alla" class="btn btn--light hero__btn">Upptäck kollektionen</a>
     </section>
 
-    <!-- ============ STATEMENT ============ -->
+    <!-- ============ LÖFTEN ============ -->
+    <section class="promises" aria-label="Våra löften">
+      <div><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg><span><b>Fri frakt</b>På alla beställningar</span></div>
+      <div><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/></svg><span><b>30 dagars öppet köp</b>Sov på saken</span></div>
+      <div><svg viewBox="0 0 24 24"><path d="M12 3c3 4 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 2-6 5-10z"/></svg><span><b>Förtvättat</b>Mjukt redan första natten</span></div>
+      <div><svg viewBox="0 0 24 24"><path d="M5 20L19 4M8 4h11v11"/></svg><span><b>Vävt i Portugal</b>Formgivet i Sverige</span></div>
+    </section>
+
     <!-- ============ BÄSTSÄLJARE ============ -->
     <section class="rail" id="bastsaljare">
       <div class="rail__head">
@@ -37,11 +44,49 @@
       <a href="kollektion.html?c=bastsaljare" class="btn btn--dark rail__cta">Shoppa alla bästsäljare</a>
     </section>
 
-    <!-- ============ EDITORIAL 1 ============ -->
-    <!-- ============ PALETT ============ -->
-    <!-- ============ STATEMENT 2 ============ -->
-    <!-- ============ LINNE (split) ============ -->
-    <!-- ============ KATEGORIER ============ -->
+    <!-- ============ TRE SKÄL ============ -->
+    <section class="reasons">
+      <div class="reasons__head">
+        <p class="eyebrow">Somniore-standarden</p>
+        <h2 class="reasons__title">Tre skäl att älska<br>våra sängkläder.</h2>
+      </div>
+      <div class="reasons__grid">
+        <article>
+          <div class="reasons__img"><img src="assets/img/linen-hand.jpg" alt="Hand som vilar i mjukt, tvättat linne" loading="lazy"></div>
+          <h3>Mjukt från första natten</h3>
+          <p>Varje del stentvättas innan den lämnar väveriet. Det ger en levande, mjuk yta direkt — och minimal krympning i din tvättmaskin.</p>
+        </article>
+        <article>
+          <div class="reasons__img"><img src="assets/img/linen-folded.jpg" alt="Vikt linne med en olivkvist" loading="lazy"></div>
+          <h3>Vävt med tid och omsorg</h3>
+          <p>Våra tyger vävs i Portugals textilhjärta, där kunnandet gått i arv i generationer. Material som håller — och blir vackrare för varje år.</p>
+        </article>
+        <article>
+          <div class="reasons__img"><img src="assets/img/percale-white-fitted.jpg" alt="Dra-på-lakan med djup kant och resår" loading="lazy"></div>
+          <h3>Gjort för att sitta perfekt</h3>
+          <p>Djupa dra-på-lakan för madrasser upp till 35 cm, resår runt om och dold knäppning på påslakanet. Detaljer du känner varje kväll.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ BÄDDPAKET ============ -->
+    <section class="bundle-split">
+      <a href="baddpaket.html" class="bundle-split__img"><img src="assets/img/linen-set-room.jpg" alt="Färdigbäddad säng i tvättat linne" loading="lazy"></a>
+      <div class="bundle-split__copy">
+        <p class="eyebrow">Bäddpaket</p>
+        <h2 class="bundle-split__title">Hela sängen.<br>Ett köp.</h2>
+        <p>Påslakan, lakan, dra-på-lakan och örngott i samma material och färgbad — samlat till paketpris. Den enklaste vägen till en säng som känns som ett hotell, fast hemma.</p>
+        <ul class="bundle-split__list">
+          <li>Påslakan</li><li>Lakan</li><li>Dra-på-lakan</li><li>2 eller 4 örngott</li>
+        </ul>
+        <div class="bundle-split__btns">
+          <a href="baddpaket.html" class="btn btn--dark">Shoppa bäddpaket</a>
+          <a href="baddpaket.html?m=linne" class="text-link">I linne</a>
+          <a href="baddpaket.html?m=percale" class="text-link">I percale</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ TYGGUIDE ============ -->
     <section class="guide-banner">
       <img src="assets/img/hero-nordic-window.jpg" alt="Säng i mörkt linne vid ett stort fönster mot nordisk skog" loading="lazy">
@@ -58,12 +103,41 @@
       </div>
     </section>
 
+
+    <!-- ============ INSPIRATION ============ -->
+    <section class="insp">
+      <div class="insp__head">
+        <h2 class="h-section">Nordiska sovrum.</h2>
+        <p>Lugna toner, naturliga material och ljus som får ta plats. Hitta inspiration till ditt eget sovrum.</p>
+      </div>
+      <div class="insp__grid">
+        <a href="produkt.html?p=linne-paslakan&amp;farg=mossa" class="insp__item insp__item--tall"><img src="assets/img/linen-green-pillows.jpg" alt="Säng i mossgrönt linne vid fönster" loading="lazy"><span>Linne i Mossa</span></a>
+        <a href="produkt.html?p=percale-lakanset&amp;farg=havre" class="insp__item"><img src="assets/img/percale-beige-pillow.jpg" alt="Örngott i havrefärgad percale" loading="lazy"><span>Percale i Havre</span></a>
+        <a href="produkt.html?p=percale-lakan&amp;farg=salvia" class="insp__item"><img src="assets/img/percale-green-folded.jpg" alt="Vikta lakan i salviagrön percale" loading="lazy"><span>Percale i Salvia</span></a>
+        <a href="produkt.html?p=percale-paslakanset&amp;farg=fjord" class="insp__item"><img src="assets/img/percale-blue-candle.jpg" alt="Säng i fjordblå percale med tänt ljus" loading="lazy"><span>Percale i Fjord</span></a>
+        <a href="produkt.html?p=linne-paslakanset&amp;farg=kritvit" class="insp__item"><img src="assets/img/linen-white-room.jpg" alt="Ljust sovrum med kritvitt linne" loading="lazy"><span>Linne i Kritvit</span></a>
+      </div>
+    </section>
+
+    <!-- ============ SOMNIORE CLUB ============ -->
+    <section class="club-band">
+      <div class="club-band__inner">
+        <p class="eyebrow">Somniore Club</p>
+        <h2 class="club-band__title">Sov gott. Samla poäng.</h2>
+        <p>Bli medlem och få 200 poäng i välkomstgåva, en poäng för varje krona du handlar för och en överraskning på din födelsedag.</p>
+        <div class="club-band__btns">
+          <a href="konto.html#skapa" class="btn btn--dark">Bli medlem</a>
+          <a href="konto.html#poang" class="text-link">Så fungerar det</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
 
   <script src="assets/js/data.js?v=50"></script>
   <script src="assets/js/layout.js?v=50"></script>
-  <script src="assets/js/home.js?v=40"></script>
+  <script src="assets/js/home.js?v=51"></script>
 </body>
 </html>

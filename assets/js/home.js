@@ -8,5 +8,5 @@
   const [prev, next] = document.querySelectorAll('#bastsaljare .arrow');
   SOM.bindRail(track, prev, next);
 
-  SOM.fadeIn('.statement p, .tile, .block__head, .tiles__captions > div');
+  SOM.fadeIn('.reasons__head, .reasons article, .bundle-split__copy, .insp__head, .insp__item, .club-band__inner');
 })();
