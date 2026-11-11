@@ -238,7 +238,7 @@ body.is-top .header:not(:hover):not(.mega-open) {
 .arrow:disabled { opacity: .25; cursor: default; background: none; }
 .rail__track {
   display: grid; grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 2 * var(--inset) - 4 * var(--gap)) / 5);
+  grid-auto-columns: calc((100% - 2 * var(--inset) - 3 * var(--gap)) / 4);
   gap: var(--gap); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--inset);
   padding: 0 var(--inset); scrollbar-width: none;
 }
@@ -410,7 +410,7 @@ a.shade-card, .shade-card {
    ========================================================= */
 @media (max-width: 1240px) {
   .nav--right { display: none; }
-  .rail__track { grid-auto-columns: calc((100% - 2 * var(--inset) - 3 * var(--gap)) / 4); }
+  .rail__track { grid-auto-columns: calc((100% - 2 * var(--inset) - 2 * var(--gap)) / 3); }
 }
 @media (max-width: 1100px) {
   .mega__inner { grid-template-columns: repeat(4, 1fr); }
@@ -432,7 +432,7 @@ a.shade-card, .shade-card {
   .statement { grid-template-columns: 1fr; }
   .statement > * { grid-column: 1; }
 
-  .rail__track { grid-auto-columns: 64%; }
+  .rail__track { grid-auto-columns: 78%; }
   .feature { padding: 0; }
   .feature__media { height: 88vh; }
 
@@ -901,3 +901,6 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
 .pd__club { font-size: .82rem; color: var(--soft); margin-top: .5rem; } .pd__club a { color: var(--petrol); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .news__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .news__legal { font-size: .76rem; color: rgba(245,241,232,.45) !important; margin-top: .2rem !important; }
+
+/* Produktfoton (packshots): zooma in så sängkläderna fyller rutan */
+.product__media img.main[src*="/p/"] { transform: scale(1.28); transform-origin: 50% 54%; }

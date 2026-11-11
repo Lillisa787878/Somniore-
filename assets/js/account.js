@@ -26,7 +26,7 @@
       profile: { name: name || '', news: !!news },
     };
     club.award(acc, CLUB.earn.signup.points, 'Välkomstgåva', 'signup');
-    if (news) club.award(acc, CLUB.earn.news.points, 'Nyhetsbrev', 'news');
+    if (news) { club.award(acc, CLUB.earn.news.points, 'Nyhetsbrev', 'news'); SOM.subscribe(email).catch(() => {}); }
     return acc;
   }
 
@@ -274,7 +274,7 @@
       let got = 0;
       if (acc.profile.birthday && club.award(acc, CLUB.earn.birthday.points, 'Födelsedag tillagd', 'birthday')) got += CLUB.earn.birthday.points;
       if (acc.profile.street && acc.profile.zip && acc.profile.city && club.award(acc, CLUB.earn.address.points, 'Adress ifylld', 'address')) got += CLUB.earn.address.points;
-      if (acc.profile.news && club.award(acc, CLUB.earn.news.points, 'Nyhetsbrev', 'news')) got += CLUB.earn.news.points;
+      if (acc.profile.news && club.award(acc, CLUB.earn.news.points, 'Nyhetsbrev', 'news')) { got += CLUB.earn.news.points; SOM.subscribe(acc.email).catch(() => {}); }
       save(); refresh();
       $('profileMsg').textContent = got ? `Sparat! Du fick ${got} poäng.` : 'Sparat.';
       if (got) SOM.toast(`+${got} poäng`);

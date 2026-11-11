@@ -203,10 +203,12 @@
         <p>Nya färger, sömnråd och erbjudanden — direkt i inkorgen.</p>
         <form class="news" id="newsForm">
           <label class="sr-only" for="email">E-postadress</label>
-          <input id="email" type="email" placeholder="E-postadress" required>
+          <input id="email" name="EMAIL" type="email" placeholder="E-postadress" autocomplete="email" required>
+          <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="news__trap">
           <button type="submit" aria-label="Prenumerera">${ICON.arrow}</button>
         </form>
         <p class="news__msg" id="newsMsg" role="status"></p>
+        <p class="news__legal">Du får ett mejl där du bekräftar din adress. Avregistrera dig när du vill.</p>
       </div>
       <div class="footer__cols">
         <div><h4>Shoppa</h4><a href="${catLink('linne')}">Linne</a><a href="${catLink('percale')}">Percale</a><a href="${catLink('alla')}">Alla sängkläder</a><a href="${catLink('bastsaljare')}">Bästsäljare</a></div>
@@ -332,11 +334,30 @@
     clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
   }
 
-  /* ---------- Nyhetsbrev (demo) ---------- */
-  $('newsForm').addEventListener('submit', e => {
+  /* ---------- Nyhetsbrev: sparas i Brevo (listan "Somniore") ---------- */
+  const BREVO_FORM = 'https://6756cb5b.sibforms.com/serve/MUIFADCSpeyQrSiQFg7hRp3l5YsJ8H_oMawDbOZJYfD6GqTfssbAda0tcY3VSmuCTFnyEtcJBZAqJVkWz8DbbduX34q_9yxf3SXLIr9P25kuAbwSjjreVF-gmgd2LnROxf04AX2TetxQfSGfBkyP4EBY-VtOLS0WUGL9Lp16lXq7JyE32CBchnaYs_hugHXSz6mLxL55M-mDwiQNHA==';
+  async function subscribe(email) {
+    const data = new FormData();
+    data.append('EMAIL', email); data.append('email_address_check', ''); data.append('locale', 'sv');
+    const res = await fetch(BREVO_FORM, { method: 'POST', body: data });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || json.success === false) throw new Error('brevo');
+  }
+  $('newsForm').addEventListener('submit', async e => {
     e.preventDefault();
-    $('newsMsg').textContent = 'Tack! Välkommen till Somniore.';
-    e.target.reset();
+    const form = e.target, msg = $('newsMsg'), btn = form.querySelector('button');
+    const email = form.EMAIL.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Ange en giltig e-postadress.'; return; }
+    if (form.email_address_check.value) return;            // spamrobot
+    btn.disabled = true; msg.textContent = 'Skickar…';
+    try {
+      await subscribe(email);
+      msg.textContent = 'Tack! Kolla din inkorg och bekräfta din adress.';
+      form.reset();
+    } catch (err) {
+      msg.textContent = 'Något gick fel. Försök igen om en stund.';
+    }
+    btn.disabled = false;
   });
 
   /* ---------- Mjuk inladdning ---------- */
@@ -384,7 +405,7 @@
   updateCount();
 
   window.SOM = {
-    club, fadeIn, productCard, toast, openCart: () => { renderCart(); togglePanel(cart, true); },
+    club, subscribe, fadeIn, productCard, toast, openCart: () => { renderCart(); togglePanel(cart, true); },
     addToCart(item) {
       const list = load();
       const same = list.find(i => i.id === item.id && i.color === item.color && i.size === item.size);
