@@ -899,3 +899,5 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
   .avatar { width: 52px; height: 52px; }
 }
 .pd__club { font-size: .82rem; color: var(--soft); margin-top: .5rem; } .pd__club a { color: var(--petrol); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.news__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.news__legal { font-size: .76rem; color: rgba(245,241,232,.45) !important; margin-top: .2rem !important; }
