@@ -98,7 +98,6 @@
         <a href="${catLink('handdukar')}">Handdukar</a>
         <a href="${catLink('badlakan')}">Badlakan</a>
         <a href="${catLink('morgonrockar')}">Morgonrockar</a>
-        <a href="${catLink('badmattor')}">Badmattor</a>
       </div>
       <div class="mega__col mega__col--text">
         <span class="mega__head mega__head--plain">Kommer snart</span>
@@ -164,7 +163,7 @@
         <details><summary>Bad</summary>
           <div class="drawer__sub">
             <p>Kommer snart</p>
-            <a href="${catLink('handdukar')}">Handdukar</a><a href="${catLink('badlakan')}">Badlakan</a><a href="${catLink('morgonrockar')}">Morgonrockar</a><a href="${catLink('badmattor')}">Badmattor</a>
+            <a href="${catLink('handdukar')}">Handdukar</a><a href="${catLink('badlakan')}">Badlakan</a><a href="${catLink('morgonrockar')}">Morgonrockar</a>
             <a href="${catLink('bad')}" class="drawer__all">Allt inom bad</a>
           </div>
         </details>
