@@ -255,12 +255,12 @@
       <div class="footer__cols">
         <div><h4>Shoppa</h4><a href="${'baddpaket.html'}">Bäddpaket</a><a href="${catLink('linne')}">Linne</a><a href="${catLink('percale')}">Percale</a><a href="${catLink('alla')}">Alla sängkläder</a><a href="${catLink('bastsaljare')}">Bästsäljare</a></div>
         <div><h4>Kundservice</h4><a href="konto.html">Mitt konto</a><a href="favoriter.html">Mina favoriter</a><a href="konto.html#poang">Somniore Club</a><a href="kundservice.html">Kontakta oss</a><a href="kundservice.html#frakt">Frakt &amp; leverans</a><a href="kundservice.html#returer">Returer</a><a href="kundservice.html#skotsel">Skötselråd</a><a href="kundservice.html#storlekar">Storleksguide</a></div>
-        <div><h4>Somniore</h4><a href="om-oss.html">Om oss</a><a href="material.html">Våra material</a><a href="om-oss.html#hantverk">Hantverk</a><a href="#">Instagram</a></div>
+        <div><h4>Somniore</h4><a href="om-oss.html">Om oss</a><a href="material.html">Våra material</a><a href="om-oss.html#hantverk">Hantverk</a><a href="#">Instagram</a><a href="mailto:hello@somniore.com">hello@somniore.com</a></div>
       </div>
     </div>
     <div class="footer__mark" aria-hidden="true">SOMNIORE</div>
     <div class="footer__bottom">
-      <span>© ${new Date().getFullYear()} Somniore AB</span>
+      <span>© ${new Date().getFullYear()} Somniore AB · <a href="mailto:hello@somniore.com">hello@somniore.com</a></span>
       <span><a href="#">Integritetspolicy</a> · <a href="#">Köpvillkor</a> · <a href="#">Cookies</a></span>
     </div>
   </footer>`;
