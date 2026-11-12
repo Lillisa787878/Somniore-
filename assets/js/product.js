@@ -99,10 +99,10 @@
     history.replaceState(null, '', url);
   }
 
-  /* ---------- Typ: endast lakan / lakanset, påslakanset / 2-pack örngott ---------- */
-  const PAIRS = { lakanset: 'lakan', lakan: 'lakanset', paslakanset: 'orngott', orngott: 'paslakanset' };
-  const TYPE_LABEL = { lakan: 'Endast lakan', lakanset: 'Lakanset', paslakanset: 'Påslakanset', orngott: '2-pack örngott' };
-  const TYPE_ORDER = ['lakan', 'lakanset', 'paslakanset', 'orngott'];
+  /* ---------- Typ: endast lakan / lakanset ---------- */
+  const PAIRS = { lakanset: 'lakan', lakan: 'lakanset' };
+  const TYPE_LABEL = { lakan: 'Endast lakan', lakanset: 'Lakanset' };
+  const TYPE_ORDER = ['lakan', 'lakanset'];
   function renderTypes() {
     const otherCat = PAIRS[p.cat];
     const other = otherCat && PRODUCTS.find(x => x.material === p.material && x.cat === otherCat);
