@@ -138,6 +138,7 @@ const COLLECTIONS = {
   percale:     { title: 'Percale', desc: MATERIALS.percale.about, img: 'percale-white-window.jpg', filter: p => p.material === 'percale', material: 'percale' },
   lakan:       { title: 'Lakan', desc: 'Överlakan i linne och percale med generös längd.', img: 'percale-green-folded.jpg', filter: p => p.cat === 'lakan' },
   drapa:       { title: 'Dra-på-lakan', desc: 'Djupa dra-på-lakan som sitter slätt och stramt.', img: 'percale-white-fitted.jpg', filter: p => p.cat === 'drapa' },
+  lakanochset: { title: 'Lakan & lakanset', desc: 'Lakan, dra-på-lakan och lakanset i linne och percale.', img: 'percale-white-fitted.jpg', filter: p => ['lakan', 'drapa', 'lakanset'].includes(p.cat) },
   lakanset:    { title: 'Lakanset', desc: 'Lakan, dra-på-lakan och örngott — samlat i ett set.', img: 'linen-set-room.jpg', filter: p => p.cat === 'lakanset' },
   bad:          { title: 'Bad', desc: 'Handdukar, badlakan och morgonrockar i samma nordiska anda — mjuka, naturliga och gjorda för att hålla. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true },
   handdukar:    { title: 'Handdukar', desc: 'Mjuka, tunga handdukar som torkar snabbt. Kommer snart.', img: 'white-sheet-line.jpg', filter: () => false, soon: true, parent: 'bad' },

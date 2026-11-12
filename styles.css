@@ -1186,3 +1186,21 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
   .quick-panel__head small { display: none; }
   .quick-panel__sizes button { min-height: 36px; padding: .35rem .4rem; font-size: .74rem; }
 }
+
+/* ---------- Runda kategoribilder (som Quince) ---------- */
+.cat-circles { display: flex; gap: clamp(1rem, 2.5vw, 2.2rem); padding: clamp(1.8rem, 3vw, 2.6rem) var(--pad) clamp(1.2rem, 2vw, 1.8rem); overflow-x: auto; scrollbar-width: none; }
+.cat-circles::-webkit-scrollbar { display: none; }
+.cat-circle { flex: none; display: flex; flex-direction: column; align-items: center; gap: .85rem; width: clamp(96px, 10vw, 138px); text-align: center; }
+.cat-circle__img { position: relative; display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #ECEAE6; box-shadow: 0 0 0 0 transparent; transition: box-shadow .25s; }
+.cat-circle__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.cat-circle__img img[src*="/p/"] { transform: scale(1.12); transform-origin: 50% 68%; }
+.cat-circle:hover .cat-circle__img img { transform: scale(1.06); }
+.cat-circle:hover .cat-circle__img img[src*="/p/"] { transform: scale(1.18); }
+.cat-circle.active .cat-circle__img { box-shadow: 0 0 0 2px var(--offwhite), 0 0 0 3.5px var(--ink); }
+.cat-circle__label { font-size: .88rem; line-height: 1.25; color: var(--ink); }
+.cat-circle.active .cat-circle__label { font-weight: 600; }
+.bp-page .cat-circles { padding-top: 0; }
+@media (max-width: 700px) {
+  .cat-circle { width: 84px; gap: .6rem; }
+  .cat-circle__label { font-size: .76rem; }
+}

@@ -32,6 +32,12 @@
     return;
   }
 
+  /* Runda kategoribilder överst (inte på Bad-sidorna, som avslutas tidigare) */
+  document.getElementById('catCircles').innerHTML = SOM.catCircles(key);
+  { /* Mobil: visa vald kategori även om den ligger utanför skärmen */
+    const row = document.querySelector('.cat-circles'), act = row && row.querySelector('.active');
+    if (act && row.scrollWidth > row.clientWidth) row.scrollLeft = act.offsetLeft - (row.clientWidth - act.offsetWidth) / 2; }
+
   const base = PRODUCTS.filter(col.filter);
 
   /* Chips: kategorier i materialkollektioner, annars material */

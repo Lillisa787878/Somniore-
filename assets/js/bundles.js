@@ -38,6 +38,11 @@
     </article>`;
   }
 
+  document.getElementById('catCircles').innerHTML = SOM.catCircles('baddpaket');
+  { /* Mobil: visa vald kategori även om den ligger utanför skärmen */
+    const row = document.querySelector('.cat-circles'), act = row && row.querySelector('.active');
+    if (act && row.scrollWidth > row.clientWidth) row.scrollLeft = act.offsetLeft - (row.clientWidth - act.offsetWidth) / 2; }
+
   const grid = document.getElementById('bpGrid');
   grid.innerHTML = items.map(card).join('');
   document.getElementById('bpCount').textContent = items.length;

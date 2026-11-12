@@ -412,6 +412,25 @@
     els.forEach(el => io.observe(el));
   }
 
+  /* ---------- Runda kategoribilder (som Quince) — bara det Somniore säljer ---------- */
+  const CAT_CIRCLES = [
+    { key: 'alla', label: 'Sängkläder', href: 'kollektion.html?c=alla', img: 'linen-white-bed.jpg', match: ['alla'] },
+    { key: 'lakanochset', label: 'Lakan & lakanset', href: 'kollektion.html?c=lakanochset', img: 'p/percale-white-stack.jpg', match: ['lakanochset', 'lakan', 'drapa', 'lakanset'] },
+    { key: 'paslakanset', label: 'Påslakanset', href: 'kollektion.html?c=paslakanset', img: 'p/linen-beige-stack.jpg', match: ['paslakanset'] },
+    { key: 'orngott', label: '2-pack örngott', href: 'kollektion.html?c=orngott', img: 'p/linen-white-pillows.jpg', match: ['orngott'] },
+    { key: 'baddpaket', label: 'Bäddpaket', href: 'baddpaket.html', img: 'p/linen-green-stack.jpg', match: ['baddpaket'] },
+  ];
+  const catCircles = active => `
+    <nav class="cat-circles" aria-label="Kategorier">
+      ${CAT_CIRCLES.map(c => {
+        const on = c.match.includes(active);
+        return `<a href="${c.href}" class="cat-circle${on ? ' active' : ''}"${on ? ' aria-current="page"' : ''}>
+          <span class="cat-circle__img"><img src="${IMG(c.img)}" alt="" loading="lazy"></span>
+          <span class="cat-circle__label">${c.label}</span>
+        </a>`;
+      }).join('')}
+    </nav>`;
+
   /* ---------- Snabbköp: kassen nere till höger på produktbilden ---------- */
   const QUICK_BTN = `<button type="button" class="quick" data-quick aria-label="Snabbköp — välj storlek"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8h15l-1.3 13H5.8z"/><path d="M8.5 8V6.5a3.5 3.5 0 017 0V8"/><path d="M12 11.5v6M9 14.5h6"/></svg></button>`;
   function closeQuick(except) {
@@ -513,7 +532,7 @@
   updateFavCount();
 
   window.SOM = {
-    club, subscribe, fadeIn, productCard, byColor, colorCards, toast, favs, favBtn, quickBtn: QUICK_BTN, openCart: () => { renderCart(); togglePanel(cart, true); },
+    club, subscribe, fadeIn, productCard, byColor, colorCards, toast, favs, favBtn, quickBtn: QUICK_BTN, catCircles, openCart: () => { renderCart(); togglePanel(cart, true); },
     addToCart(item) {
       const list = load();
       const same = list.find(i => i.id === item.id && i.color === item.color && i.size === item.size);
