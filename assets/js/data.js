@@ -41,6 +41,14 @@ const COLOR_GROUPS = {
   bla: { name: 'Blå', hex: '#27324A' },
 };
 
+/* Företagsuppgifter — visas i sidfoten och på villkorssidorna */
+const COMPANY = {
+  name: 'Somniore AB',
+  orgnr: '559570-5517',
+  address: '',            // fyll i postadress, t.ex. 'Gatan 1, 123 45 Ort'
+  email: 'hello@somniore.com',
+};
+
 const MATERIALS = {
   linne: { name: 'Linne', spec: '100 % linne · 160 gsm', short: 'Luftigt. Avslappnat.',
     care: 'Maskintvätt 40 °C med likfärgat. Torktumla på låg värme eller häng på tork. Stryk vid behov på medelvärme — eller njut av den naturliga strukturen.',

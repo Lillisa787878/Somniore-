@@ -305,8 +305,8 @@
     </div>
     <div class="footer__mark" aria-hidden="true">SOMNIORE</div>
     <div class="footer__bottom">
-      <span>© ${new Date().getFullYear()} Somniore AB · <a href="mailto:hello@somniore.com">hello@somniore.com</a></span>
-      <span><a href="#">Integritetspolicy</a> · <a href="#">Köpvillkor</a> · <a href="#">Cookies</a></span>
+      <span>© ${new Date().getFullYear()} ${COMPANY.name} · Org.nr ${COMPANY.orgnr}${COMPANY.address ? ' · ' + COMPANY.address : ''} · <a href="mailto:${COMPANY.email}">${COMPANY.email}</a></span>
+      <span><a href="kopvillkor.html">Köpvillkor</a> · <a href="integritetspolicy.html">Integritetspolicy</a> · <a href="cookies.html">Cookies</a> · <a href="club-villkor.html">Somniore Club</a></span>
     </div>
   </footer>`;
 
@@ -571,6 +571,11 @@
   document.querySelectorAll('.footer__cols h4').forEach(h => {
     h.setAttribute('role', 'button'); h.tabIndex = 0;
     h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
+  });
+
+  /* Företagsuppgifter på villkorssidorna */
+  document.querySelectorAll('[data-company]').forEach(el => {
+    el.textContent = COMPANY[el.dataset.company] || 'Uppgift kommer';
   });
 
   updateCount();
