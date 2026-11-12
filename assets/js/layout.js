@@ -121,10 +121,10 @@
         <a href="baddpaket.html?m=percale">Bäddpaket i percale</a>
         <a href="baddpaket.html?m=linne">Bäddpaket i linne</a>
       </div>
-      <a class="mega__feature" href="${productUrl(productById('linne-paslakanset'), 'midnatt')}">
-        <img src="assets/img/linen-blue-dusk.jpg" alt="">
-        <span class="mega__feature-title">Mörka kvällar.<br>Svala lakan.</span>
-        <span class="mega__feature-link">→ Shoppa Midnatt</span>
+      <a class="mega__feature" href="kollektion.html?c=alla&farg=vit">
+        <img src="assets/img/white-sheet-line.jpg" alt="Vitt lakan som torkar i vinden">
+        <span class="mega__feature-title">Torkat i vinden.<br>Vävt i Portugal.</span>
+        <span class="mega__feature-link">→ Shoppa vitt</span>
       </a>`,
     bad: `
       <div class="mega__col">
@@ -139,7 +139,7 @@
         <a href="${catLink('bad')}" class="mega__more">Få besked först →</a>
       </div>
       <a class="mega__feature" href="${catLink('bad')}">
-        <img src="assets/img/white-sheet-line.jpg" alt="">
+        <img src="assets/img/percale-white-texture.jpg" alt="">
         <span class="mega__feature-title">Mjukt efter badet.</span>
         <span class="mega__feature-link">→ Kommer snart</span>
       </a>`,
