@@ -20,12 +20,13 @@ const COLORS = {
   percale: {
     vit: { name: 'Vit', hex: '#FAFAF8', group: 'vit',
       img: { stack: 'p/percale-white-stack.jpg', pillows: 'p/percale-white-pillows.jpg', bed: 'percale-white-bed.jpg', bed2: 'percale-white-pillows-navy.jpg', room: 'percale-white-duvet.jpg', detail: 'percale-white-texture.jpg' } },
+    /* Tillfälliga örngottsbilder för Ljusgrå, Salvia och Havre tills nya produktbilder kommer */
     ljusgra: { name: 'Ljusgrå', hex: '#C9C8C4', group: 'ljusgra',
-      img: { stack: 'p/percale-grey-stack.jpg', pillows: 'p/percale-grey-pillows.jpg', bed: 'percale-grey-dark-wall.jpg', bed2: 'percale-grey-headboard.jpg', room: 'percale-grey-bed.jpg', detail: 'percale-grey-close.jpg' } },
+      img: { stack: 'p/percale-grey-stack.jpg', pillows: 'percale-grey-close.jpg', bed: 'percale-grey-dark-wall.jpg', bed2: 'percale-grey-headboard.jpg', room: 'percale-grey-bed.jpg', detail: 's/grey-5.jpg' } },
     havre: { name: 'Havre', hex: '#E6DDCC', group: 'sand',
-      img: { stack: 'p/percale-beige-stack.jpg', pillows: 'percale-beige-pillow.jpg', bed: 'percale-beige-bed.jpg', bed2: 's/beige-4.jpg', room: 's/beige-5.jpg', detail: 'percale-beige-folded.jpg' } },
+      img: { stack: 'p/percale-beige-stack.jpg', pillows: 's/beige-4.jpg', bed: 'percale-beige-bed.jpg', bed2: 'percale-beige-pillow.jpg', room: 's/beige-5.jpg', detail: 'percale-beige-folded.jpg' } },
     salvia: { name: 'Salvia', hex: '#8A8D6E', group: 'gron',
-      img: { stack: 'p/percale-green-stack.jpg', pillows: 'p/percale-green-pillows.jpg', bed: 'percale-green-bed.jpg', bed2: 'percale-green-above.jpg', room: 'percale-green-light.jpg', detail: 'percale-green-hem.jpg' } },
+      img: { stack: 'p/percale-green-stack.jpg', pillows: 's/green-3.jpg', bed: 'percale-green-bed.jpg', bed2: 'percale-green-above.jpg', room: 'percale-green-light.jpg', detail: 'percale-green-hem.jpg' } },
     fjord: { name: 'Fjord', hex: '#2E3A50', group: 'bla',
       img: { stack: 'p/percale-blue-stack.jpg', pillows: 'p/percale-blue-pillows.jpg', bed: 'percale-blue-bed.jpg', bed2: 'percale-blue-candle.jpg', room: 's/blue-3.jpg', detail: 'percale-blue-hem.jpg' } },
   },
