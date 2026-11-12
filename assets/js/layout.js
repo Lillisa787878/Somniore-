@@ -203,10 +203,6 @@
       </nav>
       <a href="index.html" class="logo" aria-label="Somniore – till startsidan">SOMNIORE</a>
       <div class="tools">
-        <nav class="nav nav--right" aria-label="Mer">
-          <a href="material.html" class="nav__link">Våra material</a>
-          <a href="om-oss.html" class="nav__link">Om Somniore</a>
-        </nav>
         <button class="tool hide-m" aria-label="Sök">${ICON.search}</button>
         <a class="tool acc-link${me ? ' is-in' : ''}" href="konto.html" aria-label="${me ? 'Mitt konto' : 'Logga in'}" title="${me ? 'Mitt konto · ' + (me.points || 0) + ' poäng' : 'Logga in'}">${ICON.user}</a>
         <a class="tool fav-link" href="favoriter.html" aria-label="Favoriter" title="Favoriter">${HEART}<span class="cart-count" id="favCount"></span></a>
@@ -253,8 +249,6 @@
             <a href="${catLink('bad')}" class="drawer__all">Allt inom bad</a>
           </div>
         </details>
-        <a href="material.html">Våra material</a>
-        <a href="om-oss.html">Om Somniore</a>
       </nav>
       <div class="drawer__tiles">
         <a href="baddpaket.html"><img src="assets/img/percale-grey-dark-wall.jpg" alt="" loading="lazy"><span>Bäddpaket</span></a>
