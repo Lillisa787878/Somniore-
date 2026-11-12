@@ -99,16 +99,17 @@
     history.replaceState(null, '', url);
   }
 
-  /* ---------- Typ: endast lakan / lakanset ---------- */
-  const PAIRS = { lakanset: 'lakan', lakan: 'lakanset' };
-  const TYPE_LABEL = { lakan: 'Endast lakan', lakanset: 'Lakanset' };
+  /* ---------- Typ: endast lakan / lakanset, påslakanset / 2-pack örngott ---------- */
+  const PAIRS = { lakanset: 'lakan', lakan: 'lakanset', paslakanset: 'orngott', orngott: 'paslakanset' };
+  const TYPE_LABEL = { lakan: 'Endast lakan', lakanset: 'Lakanset', paslakanset: 'Påslakanset', orngott: '2-pack örngott' };
+  const TYPE_ORDER = ['lakan', 'lakanset', 'paslakanset', 'orngott'];
   function renderTypes() {
     const otherCat = PAIRS[p.cat];
     const other = otherCat && PRODUCTS.find(x => x.material === p.material && x.cat === otherCat);
     if (!other) return;
     $('typeOpt').hidden = false;
     $('pTypeName').textContent = TYPE_LABEL[p.cat];
-    const opts = [p, other].sort((a, b) => a.cat.length - b.cat.length);
+    const opts = [p, other].sort((a, b) => TYPE_ORDER.indexOf(a.cat) - TYPE_ORDER.indexOf(b.cat));
     $('pTypes').innerHTML = opts.map(x => x.id === p.id
       ? `<span class="pd-box active">${TYPE_LABEL[x.cat]}</span>`
       : `<a class="pd-box" href="${productUrl(x, state.color)}">${TYPE_LABEL[x.cat]}</a>`).join('');
