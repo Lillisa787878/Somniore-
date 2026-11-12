@@ -125,6 +125,17 @@
     updateSticky();
   });
 
+  /* Förvald storlek från "Min säng" på kontosidan */
+  const myBed = SOM.club.current()?.bed;
+  if (myBed) {
+    const want = { drapa: myBed.bed, lakanset: myBed.bed, baddpaket: myBed.bed, paslakanset: myBed.duvet, orngott: myBed.pillow }[p.cat];
+    const i = SIZES[p.cat].map(sizeInfo).findIndex(s => s.title === want);
+    if (i >= 0) {
+      $('pSizes').children[i].click();
+      $('pSizeName').textContent += ' · din säng';
+    }
+  }
+
   /* ---------- Köp ---------- */
   function addToCart() {
     if (!state.size) {

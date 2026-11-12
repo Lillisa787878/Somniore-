@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=65">
+  <link rel="stylesheet" href="styles.css?v=71">
 </head>
 <body>
   <div id="site-header"></div>
@@ -61,91 +61,153 @@
       </div>
     </section>
 
-    <!-- ============ Inloggad: kundportal ============ -->
+    <!-- ============ Inloggad: kundportal (upplägg som Quince) ============ -->
     <section class="portal" id="portalView" hidden>
-      <header class="portal__head">
-        <nav class="crumbs" aria-label="Brödsmulor"><a href="index.html">Hem</a> <span>/</span> <span>Mitt konto</span></nav>
+      <aside class="portal__side">
         <div class="portal__hello">
           <div class="avatar" id="avatar"></div>
           <div>
-            <h1 class="portal__title">Hej, <span id="helloName"></span></h1>
-            <p class="portal__sub"><span class="tier-badge" id="tierBadge"></span> <span id="memberSince"></span></p>
+            <p class="portal__name">Hej, <span id="helloName"></span></p>
+            <p class="portal__mail" id="helloMail"></p>
+            <span class="tier-badge" id="tierBadge"></span>
           </div>
         </div>
-      </header>
-
-      <div class="portal__body">
         <nav class="portal__nav" aria-label="Kontomeny">
-          <a href="#oversikt" data-tab="oversikt">Översikt</a>
-          <a href="#bestallningar" data-tab="bestallningar">Beställningar</a>
-          <a href="#poang" data-tab="poang">Poäng &amp; förmåner</a>
-          <a href="#uppgifter" data-tab="uppgifter">Mina uppgifter</a>
-          <button type="button" id="logoutBtn">Logga ut</button>
+          <a href="#oversikt" data-tab="oversikt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20h-5.5v-5.5h-5V20H4z"/></svg><span>Översikt</span></a>
+          <a href="#bestallningar" data-tab="bestallningar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></svg><span>Mina beställningar</span></a>
+          <a href="#favoriter" data-tab="favoriter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.6-4.6-9.2-9.4C1.7 7.5 3.9 4.4 7.2 4.4c2 0 3.6 1.1 4.8 2.9 1.2-1.8 2.8-2.9 4.8-2.9 3.3 0 5.5 3.1 4.4 6.5-1.6 4.8-9.2 9.4-9.2 9.4z"/></svg><span>Mina favoriter</span></a>
+          <a href="#poang" data-tab="poang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.4l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><span>Somniore Club</span></a>
+          <a href="#sang" data-tab="sang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18.5V7M3 14h18v4.5M21 14v-2.5a3 3 0 00-3-3h-7V14"/><circle cx="7" cy="11" r="1.8"/></svg><span>Min säng</span></a>
+          <a href="#profil" data-tab="profil"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.3-4 4.3-6 8-6s6.7 2 8 6"/></svg><span>Min profil</span></a>
+          <a href="#adresser" data-tab="adresser"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span>Adresser</span></a>
+          <a href="#betalning" data-tab="betalning"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3 10h18M7 15h4"/></svg><span>Betalsätt</span></a>
+          <a href="#kommunikation" data-tab="kommunikation"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg><span>Nyhetsbrev & aviseringar</span></a>
+          <a href="#service" data-tab="service"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span>Personlig service</span></a>
+          <button type="button" id="logoutBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h5v16h-5M10 8l-4 4 4 4M6 12h10"/></svg><span>Logga ut</span></button>
         </nav>
+      </aside>
 
-        <div class="portal__main">
-          <!-- Översikt -->
-          <div class="panel" data-panel="oversikt">
-            <div class="points-card" id="pointsCard"></div>
-            <div class="portal-grid">
-              <a href="#bestallningar" class="portal-tile">
-                <span class="portal-tile__kicker">Beställningar</span>
-                <b id="orderCount">0</b>
-                <span>Se status och spåra paket</span>
-              </a>
-              <a href="#poang" class="portal-tile">
-                <span class="portal-tile__kicker">Rabattkoder</span>
-                <b id="codeCount">0</b>
-                <span>Lös in poäng mot rabatt</span>
-              </a>
-              <a href="#uppgifter" class="portal-tile">
-                <span class="portal-tile__kicker">Mina uppgifter</span>
-                <b id="profileDone">0/3</b>
-                <span>Fyll i och få extra poäng</span>
-              </a>
+      <div class="portal__main">
+        <!-- Översikt -->
+        <div class="panel" data-panel="oversikt">
+          <h1 class="portal__title">Översikt</h1>
+          <p class="portal__lead" id="memberSince"></p>
+          <div class="points-card" id="pointsCard"></div>
+          <div class="portal-grid">
+            <a href="#bestallningar" class="portal-tile"><span class="portal-tile__kicker">Beställningar</span><b id="orderCount">0</b><span>Status, spårning och returer</span></a>
+            <a href="#favoriter" class="portal-tile"><span class="portal-tile__kicker">Favoriter</span><b id="favCountTile">0</b><span>Sparade produkter</span></a>
+            <a href="#poang" class="portal-tile"><span class="portal-tile__kicker">Rabattkoder</span><b id="codeCount">0</b><span>Lös in poäng mot rabatt</span></a>
+          </div>
+          <h2 class="portal__h2">Samla fler poäng</h2>
+          <ul class="earn-list" id="earnList"></ul>
+        </div>
+
+        <!-- Beställningar -->
+        <div class="panel" data-panel="bestallningar" hidden>
+          <h1 class="portal__title">Mina beställningar</h1>
+          <div id="orders"></div>
+        </div>
+
+        <!-- Favoriter -->
+        <div class="panel" data-panel="favoriter" hidden>
+          <h1 class="portal__title">Mina favoriter</h1>
+          <div class="portal-favs" id="favGrid"></div>
+        </div>
+
+        <!-- Somniore Club -->
+        <div class="panel" data-panel="poang" hidden>
+          <h1 class="portal__title">Somniore Club</h1>
+          <p class="portal__lead">Samla poäng på varje köp, lös in dem mot rabatt och nå nya nivåer med fler förmåner.</p>
+          <div class="tiers" id="tiers"></div>
+          <h2 class="portal__h2">Lös in poäng</h2>
+          <div class="rewards" id="rewards"></div>
+          <div id="codesBox"></div>
+          <h2 class="portal__h2">Poänghistorik</h2>
+          <table class="history" id="history"></table>
+        </div>
+
+        <!-- Min säng -->
+        <div class="panel" data-panel="sang" hidden>
+          <h1 class="portal__title">Min säng</h1>
+          <p class="portal__lead">Spara dina mått så väljer vi rätt storlek åt dig på varje produkt.</p>
+          <form class="profile-form bed-form" id="bedForm">
+            <fieldset class="field field--wide"><legend>Sängbredd</legend><div class="opt-row" data-name="bed"></div></fieldset>
+            <fieldset class="field field--wide"><legend>Påslakanset</legend><div class="opt-row" data-name="duvet"></div></fieldset>
+            <fieldset class="field field--wide"><legend>Örngott</legend><div class="opt-row" data-name="pillow"></div></fieldset>
+            <fieldset class="field field--wide"><legend>Jag sover helst i</legend><div class="opt-row" data-name="material"></div></fieldset>
+            <div class="field--wide profile-form__foot">
+              <button class="auth__submit" type="submit">Spara min säng</button>
+              <span class="profile-form__msg" id="bedMsg"></span>
             </div>
-            <h2 class="portal__h2">Samla fler poäng</h2>
-            <ul class="earn-list" id="earnList"></ul>
+          </form>
+        </div>
+
+        <!-- Min profil -->
+        <div class="panel" data-panel="profil" hidden>
+          <h1 class="portal__title">Min profil</h1>
+          <form class="profile-form" id="profileForm">
+            <label class="field"><span>Förnamn</span><input name="name" autocomplete="given-name"></label>
+            <label class="field"><span>Efternamn</span><input name="last" autocomplete="family-name"></label>
+            <label class="field field--wide"><span>E-post</span><input name="email" type="email" disabled></label>
+            <label class="field"><span>Telefon</span><input name="phone" type="tel" autocomplete="tel"></label>
+            <label class="field"><span>Födelsedag <em>+100 poäng</em></span><input name="birthday" type="date"></label>
+            <div class="field--wide profile-form__foot">
+              <button class="auth__submit" type="submit">Spara</button>
+              <span class="profile-form__msg" id="profileMsg"></span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Adresser -->
+        <div class="panel" data-panel="adresser" hidden>
+          <h1 class="portal__title">Adresser</h1>
+          <div id="addressCard"></div>
+          <form class="profile-form" id="addressForm">
+            <label class="field field--wide"><span>Gatuadress <em>+50 poäng</em></span><input name="street" autocomplete="street-address"></label>
+            <label class="field field--wide"><span>C/o, lägenhet, portkod <small>(valfritt)</small></span><input name="co" autocomplete="address-line2"></label>
+            <label class="field"><span>Postnummer</span><input name="zip" autocomplete="postal-code" inputmode="numeric"></label>
+            <label class="field"><span>Ort</span><input name="city" autocomplete="address-level2"></label>
+            <label class="field field--wide"><span>Land</span><input name="country" value="Sverige" disabled></label>
+            <div class="field--wide profile-form__foot">
+              <button class="auth__submit" type="submit">Spara adress</button>
+              <span class="profile-form__msg" id="addressMsg"></span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Betalsätt -->
+        <div class="panel" data-panel="betalning" hidden>
+          <h1 class="portal__title">Betalsätt</h1>
+          <div class="empty-box">
+            <p class="empty-box__title">Inga sparade betalsätt</p>
+            <p>Du väljer betalsätt tryggt i kassan när du handlar. Av säkerhetsskäl sparar vi aldrig kortuppgifter på ditt konto.</p>
           </div>
+        </div>
 
-          <!-- Beställningar -->
-          <div class="panel" data-panel="bestallningar" hidden>
-            <h2 class="portal__h2">Beställningar</h2>
-            <div id="orders"></div>
-          </div>
+        <!-- Nyhetsbrev & aviseringar -->
+        <div class="panel" data-panel="kommunikation" hidden>
+          <h1 class="portal__title">Nyhetsbrev &amp; aviseringar</h1>
+          <form class="pref-list" id="prefForm">
+            <label class="pref"><span><b>Nyhetsbrev</b>Nya färger, erbjudanden och inspiration — några gånger i månaden. <em>+100 poäng</em></span><input type="checkbox" name="news"><i></i></label>
+            <label class="pref"><span><b>Nya färger</b>Få veta först när en ny färg lanseras.</span><input type="checkbox" name="colors"><i></i></label>
+            <label class="pref"><span><b>Tillbaka i lager</b>Meddelande när en favorit finns i lager igen.</span><input type="checkbox" name="restock"><i></i></label>
+            <label class="pref"><span><b>Skötselpåminnelser</b>Tips för att dina sängkläder ska hålla i många år.</span><input type="checkbox" name="care"><i></i></label>
+            <div class="profile-form__foot">
+              <button class="auth__submit" type="submit">Spara val</button>
+              <span class="profile-form__msg" id="prefMsg"></span>
+            </div>
+          </form>
+        </div>
 
-          <!-- Poäng -->
-          <div class="panel" data-panel="poang" hidden>
-            <h2 class="portal__h2">Somniore Club</h2>
-            <div class="tiers" id="tiers"></div>
-
-            <h2 class="portal__h2">Lös in poäng</h2>
-            <div class="rewards" id="rewards"></div>
-
-            <div id="codesBox"></div>
-
-            <h2 class="portal__h2">Poänghistorik</h2>
-            <table class="history" id="history"></table>
-          </div>
-
-          <!-- Uppgifter -->
-          <div class="panel" data-panel="uppgifter" hidden>
-            <h2 class="portal__h2">Mina uppgifter</h2>
-            <form class="profile-form" id="profileForm">
-              <label class="field"><span>Förnamn</span><input name="name" autocomplete="given-name"></label>
-              <label class="field"><span>Efternamn</span><input name="last" autocomplete="family-name"></label>
-              <label class="field field--wide"><span>E-post</span><input name="email" type="email" disabled></label>
-              <label class="field"><span>Telefon</span><input name="phone" type="tel" autocomplete="tel"></label>
-              <label class="field"><span>Födelsedag <em>+100 poäng</em></span><input name="birthday" type="date"></label>
-              <label class="field field--wide"><span>Adress <em>+50 poäng</em></span><input name="street" autocomplete="street-address" placeholder="Gatuadress"></label>
-              <label class="field"><span>Postnummer</span><input name="zip" autocomplete="postal-code" inputmode="numeric"></label>
-              <label class="field"><span>Ort</span><input name="city" autocomplete="address-level2"></label>
-              <label class="check field--wide"><input type="checkbox" name="news"><span>Nyhetsbrev med erbjudanden <em>+100 poäng</em></span></label>
-              <div class="field--wide profile-form__foot">
-                <button class="auth__submit" type="submit">Spara</button>
-                <span class="profile-form__msg" id="profileMsg"></span>
-              </div>
-            </form>
+        <!-- Personlig service -->
+        <div class="panel" data-panel="service" hidden>
+          <h1 class="portal__title">Personlig service</h1>
+          <p class="portal__lead">Vi hjälper dig gärna att välja material, färg och storlek — eller med allt som rör din beställning.</p>
+          <div class="service-cards">
+            <a class="service-card" href="mailto:hej@somniore.se"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg><b>Skriv till oss</b><span>hej@somniore.se · svar inom en arbetsdag</span></a>
+            <a class="service-card" href="kundservice.html#returer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></svg><b>Returer</b><span>30 dagars öppet köp</span></a>
+            <a class="service-card" href="kundservice.html#storlekar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18.5V7M3 14h18v4.5M21 14v-2.5a3 3 0 00-3-3h-7V14"/><circle cx="7" cy="11" r="1.8"/></svg><b>Storleksguide</b><span>Hitta rätt mått för din säng</span></a>
+            <a class="service-card" href="kundservice.html#skotsel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.4l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg><b>Skötselråd</b><span>Så håller linne och percale länge</span></a>
           </div>
         </div>
       </div>
@@ -156,6 +218,6 @@
 
   <script src="assets/js/data.js?v=69"></script>
   <script src="assets/js/layout.js?v=66"></script>
-  <script src="assets/js/account.js?v=40"></script>
+  <script src="assets/js/account.js?v=71"></script>
 </body>
 </html>

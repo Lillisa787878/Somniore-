@@ -691,22 +691,9 @@ a.shade-card, .shade-card {
 .auth__small a { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ---------- Kundportal ---------- */
-.portal__head { padding: calc(var(--header) + clamp(2.5rem, 5vw, 4rem)) var(--inset) clamp(2rem, 3vw, 2.6rem); background: var(--beige); }
-.portal__hello { display: flex; align-items: center; gap: 1.2rem; margin-top: 1.6rem; }
-.avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--petrol); color: var(--beige); display: grid; place-items: center; font-family: var(--serif); font-size: 1.8rem; overflow: hidden; flex: none; }
-.avatar img { height: 100%; object-fit: cover; }
-.portal__title { font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1; letter-spacing: -0.02em; }
-.portal__sub { margin-top: .5rem; font-size: .86rem; color: var(--soft); }
 .tier-badge { display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: .35rem .6rem; border-radius: 2px; background: var(--sage); color: var(--petrol); }
 .tier-badge[data-tier="skymning"] { background: #C9B48A; color: #3b2f17; }
 .tier-badge[data-tier="midnatt"] { background: var(--navy); color: var(--beige); }
-.portal__body { display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem, 5vw, 5rem); padding: clamp(2rem, 4vw, 3.5rem) var(--inset) clamp(5rem, 9vw, 8rem); }
-.portal__nav { position: sticky; top: calc(var(--header) + 2rem); align-self: start; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
-.portal__nav a, .portal__nav button { text-align: left; padding: .95rem 0; border-bottom: 1px solid var(--line); font-size: .92rem; color: var(--soft); transition: color .2s, padding .25s; }
-.portal__nav a:hover, .portal__nav button:hover { color: var(--ink); }
-.portal__nav a.active { color: var(--petrol); font-weight: 500; padding-left: .7rem; box-shadow: inset 2px 0 0 var(--petrol); }
-.portal__nav button { color: #9a3b2e; }
-.portal__main { min-width: 0; }
 .portal__h2 { font-family: var(--serif); font-weight: 400; font-size: 1.9rem; margin: 3rem 0 1.2rem; }
 .panel > .portal__h2:first-child { margin-top: 0; }
 
@@ -779,11 +766,6 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
 
 @media (max-width: 900px) {
   .auth__panel { padding-top: calc(var(--header) + 2rem); }
-  .portal__body { grid-template-columns: 1fr; gap: 1.6rem; }
-  .portal__nav { position: static; flex-direction: row; overflow-x: auto; border-top: 0; border-bottom: 1px solid var(--line); scrollbar-width: none; gap: 1.4rem; }
-  .portal__nav::-webkit-scrollbar { display: none; }
-  .portal__nav a, .portal__nav button { border-bottom: 2px solid transparent; white-space: nowrap; padding: .8rem 0; }
-  .portal__nav a.active { padding-left: 0; box-shadow: none; border-color: var(--petrol); }
   .points-card { grid-template-columns: 1fr; }
   .tiers, .rewards { grid-template-columns: 1fr; }
 }
@@ -793,7 +775,6 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
   .earn-list li { grid-template-columns: 28px 1fr auto; }
   .earn-list__go { grid-column: 2 / -1; text-align: left; margin-top: -.5rem; }
   .order { grid-template-columns: 1fr 1fr; }
-  .avatar { width: 52px; height: 52px; }
 }
 .news__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .news__legal { font-size: .76rem; color: rgba(245,241,232,.45) !important; margin-top: .2rem !important; }
@@ -1091,4 +1072,83 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
   .pd-sticky.show { transform: none; }
   .pd-sticky__btn { width: 100%; height: 52px; border-radius: 999px; background: var(--petrol); color: var(--beige); font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
   .pd-sticky__meta { font-size: .76rem; color: var(--soft); }
+}
+
+
+/* =========================================================
+   KUNDPORTAL — upplägg som Quince, i Somniores stil
+   ========================================================= */
+.portal { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 7rem); max-width: 1320px; margin: 0 auto; padding: calc(var(--header) + clamp(2.5rem, 5vw, 4rem)) var(--inset) clamp(5rem, 9vw, 8rem); }
+.portal > * { min-width: 0; }
+.portal__side { position: sticky; top: calc(var(--header) + 2rem); align-self: start; }
+.portal__hello { display: flex; gap: 1rem; align-items: flex-start; padding-bottom: 1.6rem; margin-bottom: .6rem; border-bottom: 1px solid var(--line); }
+.avatar { flex: none; width: 52px; height: 52px; border-radius: 50%; overflow: hidden; background: var(--petrol); color: var(--beige); display: grid; place-items: center; font-family: var(--serif); font-size: 1.5rem; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.portal__name { font-family: var(--serif); font-size: 1.65rem; line-height: 1.1; }
+.portal__mail { font-size: .8rem; color: var(--soft); margin: .25rem 0 .6rem; word-break: break-all; }
+.portal__nav { display: flex; flex-direction: column; }
+.portal__nav a, .portal__nav button { display: flex; align-items: center; gap: .85rem; padding: .8rem .2rem; font-size: .93rem; color: var(--soft); text-align: left; transition: color .2s; }
+.portal__nav svg { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.portal__nav a:hover, .portal__nav button:hover { color: var(--ink); }
+.portal__nav a.active { color: var(--ink); font-weight: 600; }
+.portal__nav a.active svg { color: var(--petrol); stroke-width: 1.6; }
+.portal__nav button { margin-top: 2rem; }
+.portal__main { min-width: 0; }
+.portal__title { font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 4vw, 3.2rem); line-height: 1.05; letter-spacing: -.01em; margin-bottom: .6rem; }
+.portal__lead { color: var(--soft); max-width: 38rem; margin-bottom: 2rem; }
+.portal__title + :not(.portal__lead) { margin-top: 1.8rem; }
+.portal__h2 { font-family: var(--sans); font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; margin: 3rem 0 1.2rem; }
+.portal-favs__grid { grid-template-columns: repeat(3, 1fr); padding: 0; }
+
+/* Min säng */
+.bed-form fieldset { border: 0; margin: 0; padding: 0; }
+.bed-form legend { font-size: .8rem; font-weight: 600; margin-bottom: .7rem; }
+.opt-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { position: relative; cursor: pointer; }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt span { display: inline-flex; align-items: center; min-height: 44px; padding: .55rem 1.1rem; border: 1px solid rgba(30,35,36,.25); border-radius: 2px; font-size: .86rem; transition: background .2s, color .2s, border-color .2s; }
+.opt:hover span { border-color: var(--ink); }
+.opt input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--offwhite); }
+.opt input:focus-visible + span { outline: 2px solid var(--petrol); outline-offset: 2px; }
+
+/* Adresser */
+.address-card { background: var(--beige); padding: 1.4rem 1.6rem; max-width: 44rem; margin-bottom: 2rem; line-height: 1.6; font-size: .92rem; }
+.address-card__kicker { font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--petrol); margin-bottom: .5rem; }
+.field small { font-weight: 400; color: var(--soft); }
+
+/* Aviseringar med reglage */
+.pref-list { max-width: 44rem; border-top: 1px solid var(--line); }
+.pref { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+.pref span { font-size: .88rem; color: var(--soft); line-height: 1.5; }
+.pref b { display: block; font-weight: 600; color: var(--ink); font-size: .93rem; margin-bottom: .15rem; }
+.pref em { font-style: normal; color: var(--petrol); font-weight: 600; font-size: .78rem; }
+.pref input { position: absolute; opacity: 0; pointer-events: none; }
+.pref i { flex: none; position: relative; width: 44px; height: 26px; border-radius: 13px; background: #d6d3cd; transition: background .25s; }
+.pref i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: transform .25s; }
+.pref input:checked + i { background: var(--petrol); }
+.pref input:checked + i::after { transform: translateX(18px); }
+.pref input:focus-visible + i { outline: 2px solid var(--petrol); outline-offset: 2px; }
+.pref-list .profile-form__foot { margin-top: 1.6rem; }
+
+/* Personlig service */
+.service-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); max-width: 48rem; }
+.service-card { display: flex; flex-direction: column; gap: .3rem; background: var(--beige); padding: 1.6rem; transition: background .2s; }
+.service-card:hover { background: var(--card); }
+.service-card svg { width: 24px; height: 24px; fill: none; stroke: var(--petrol); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; margin-bottom: .6rem; }
+.service-card b { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; }
+.service-card span { font-size: .85rem; color: var(--soft); }
+
+@media (max-width: 900px) {
+  .portal { grid-template-columns: 1fr; gap: 1.4rem; padding-top: calc(var(--header) + 1.6rem); }
+  .portal__side { position: static; }
+  .portal__hello { border-bottom: 0; padding-bottom: .4rem; margin-bottom: 0; }
+  .portal__nav { flex-direction: row; overflow-x: auto; scrollbar-width: none; gap: 6px; margin: 0 calc(-1 * var(--inset)); padding: .4rem var(--inset) .2rem; }
+  .portal__nav::-webkit-scrollbar { display: none; }
+  .portal__nav a, .portal__nav button { flex: none; white-space: nowrap; gap: .5rem; padding: .55rem .9rem; border: 1px solid var(--line); border-radius: 999px; font-size: .84rem; }
+  .portal__nav svg { width: 16px; height: 16px; }
+  .portal__nav a.active { background: var(--ink); color: var(--offwhite); border-color: var(--ink); font-weight: 500; }
+  .portal__nav a.active svg { color: var(--offwhite); }
+  .portal__nav button { margin-top: 0; }
+  .portal-favs__grid { grid-template-columns: 1fr 1fr; }
+  .service-cards { grid-template-columns: 1fr; }
 }
