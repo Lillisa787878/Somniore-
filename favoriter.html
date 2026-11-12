@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mina favoriter — Somniore</title>
+  <meta name="description" content="Produkter du har sparat som favoriter hos Somniore.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=61">
+</head>
+<body class="">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-head">
+      <nav class="crumbs" aria-label="Brödsmulor"><a href="index.html">Hem</a> <span>/</span> <span>Mina favoriter</span></nav>
+      <h1 class="page-head__title">Mina favoriter<sup class="fav-total" id="favTotal"></sup></h1>
+      <p class="page-head__text">Allt du har sparat med hjärtat samlas här. Klicka på hjärtat igen för att ta bort en produkt.</p>
+    </section>
+
+    <section class="grid fav-grid" id="grid"></section>
+
+    <section class="fav-empty" id="empty" hidden>
+      <svg class="fav-empty__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.6-4.6-9.2-9.4C1.7 7.5 3.9 4.4 7.2 4.4c2 0 3.6 1.1 4.8 2.9 1.2-1.8 2.8-2.9 4.8-2.9 3.3 0 5.5 3.1 4.4 6.5-1.6 4.8-9.2 9.4-9.2 9.4z"/></svg>
+      <h2>Inga favoriter än.</h2>
+      <p>Tryck på hjärtat på en produktbild så sparas den här — perfekt när du vill jämföra färger eller fundera en natt till.</p>
+      <div class="fav-empty__btns">
+        <a href="kollektion.html?c=linne" class="btn btn--dark">Upptäck linne</a>
+        <a href="kollektion.html?c=percale" class="btn btn--line">Upptäck percale</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js?v=58"></script>
+  <script src="assets/js/layout.js?v=61"></script>
+  <script src="assets/js/favorites.js?v=61"></script>
+</body>
+</html>

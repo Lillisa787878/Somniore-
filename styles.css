@@ -1046,3 +1046,18 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
 @keyframes favPop { 50% { transform: scale(1.18); } }
 .pd__main .fav { top: 14px; right: 14px; width: 44px; height: 44px; }
 @media (max-width: 700px) { .fav { width: 34px; height: 34px; top: 8px; right: 8px; } .fav svg { width: 17px; height: 17px; } .pd__main .fav { width: 40px; height: 40px; top: 12px; right: 12px; } .pd__main .fav svg { width: 19px; height: 19px; } }
+
+/* ---------- Favoriter: ikon i sidhuvudet + favoritsidan ---------- */
+.fav-link { position: relative; }
+.fav-link svg { stroke-linejoin: round; }
+.fav-total { font-family: var(--sans, inherit); font-size: .9rem; letter-spacing: 0; margin-left: .35rem; vertical-align: super; color: var(--soft); }
+.fav-grid { padding-top: clamp(2rem, 4vw, 3rem); }
+.fav-grid .product { transition: opacity .3s ease, transform .3s ease; }
+.fav-grid .product.is-leaving { opacity: 0; transform: scale(.97); }
+.fav-empty { max-width: 34rem; margin: 0 auto; padding: clamp(3.5rem, 8vw, 6rem) var(--pad) clamp(5rem, 9vw, 8rem); text-align: center; }
+.fav-empty__icon { width: 44px; height: 44px; fill: none; stroke: var(--petrol); stroke-width: 1; stroke-linejoin: round; }
+.fav-empty h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.05; margin: 1rem 0 .9rem; }
+.fav-empty p { color: var(--soft); }
+.fav-empty__btns { display: flex; gap: .7rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+.btn--line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.btn--line:hover { background: var(--ink); color: var(--offwhite); }

@@ -71,8 +71,15 @@
       x.classList.toggle('on', on); x.setAttribute('aria-pressed', on);
       x.setAttribute('aria-label', on ? 'Ta bort från favoriter' : 'Spara som favorit');
     });
+    updateFavCount();
     toast(on ? 'Sparad som favorit' : 'Borttagen från favoriter');
+    document.dispatchEvent(new CustomEvent('som:fav', { detail: { id: b.dataset.fav, on } }));
   });
+  function updateFavCount() {
+    const el = document.getElementById('favCount'); if (!el) return;
+    const n = favs.list().length;
+    el.textContent = n || ''; el.toggleAttribute('data-zero', n === 0);
+  }
 
   const catLink = c => `kollektion.html?c=${c}`;
   const colDots = (mat) => Object.entries(COLORS[mat]).map(([k, c]) =>
@@ -161,6 +168,7 @@
         </nav>
         <button class="tool hide-m" aria-label="Sök">${ICON.search}</button>
         <a class="tool acc-link${me ? ' is-in' : ''}" href="konto.html" aria-label="${me ? 'Mitt konto' : 'Logga in'}" title="${me ? 'Mitt konto · ' + (me.points || 0) + ' poäng' : 'Logga in'}">${ICON.user}</a>
+        <a class="tool fav-link" href="favoriter.html" aria-label="Favoriter" title="Favoriter">${HEART}<span class="cart-count" id="favCount"></span></a>
         <button class="tool cart-btn" id="cartBtn" aria-label="Varukorg">${ICON.bag}<span class="cart-count" id="cartCount">0</span></button>
       </div>
     </div>
@@ -203,6 +211,7 @@
       </div>
       <div class="drawer__foot">
         <a href="konto.html">${me ? 'Mitt konto · ' + (me.points || 0) + ' poäng' : 'Logga in / Skapa konto'}</a>
+        <a href="favoriter.html">Mina favoriter</a>
         <a href="kundservice.html">Kundservice</a>
         <a href="kundservice.html#frakt">Frakt &amp; returer</a>
       </div>
@@ -245,7 +254,7 @@
       </div>
       <div class="footer__cols">
         <div><h4>Shoppa</h4><a href="${'baddpaket.html'}">Bäddpaket</a><a href="${catLink('linne')}">Linne</a><a href="${catLink('percale')}">Percale</a><a href="${catLink('alla')}">Alla sängkläder</a><a href="${catLink('bastsaljare')}">Bästsäljare</a></div>
-        <div><h4>Kundservice</h4><a href="konto.html">Mitt konto</a><a href="konto.html#poang">Somniore Club</a><a href="kundservice.html">Kontakta oss</a><a href="kundservice.html#frakt">Frakt &amp; leverans</a><a href="kundservice.html#returer">Returer</a><a href="kundservice.html#skotsel">Skötselråd</a><a href="kundservice.html#storlekar">Storleksguide</a></div>
+        <div><h4>Kundservice</h4><a href="konto.html">Mitt konto</a><a href="favoriter.html">Mina favoriter</a><a href="konto.html#poang">Somniore Club</a><a href="kundservice.html">Kontakta oss</a><a href="kundservice.html#frakt">Frakt &amp; leverans</a><a href="kundservice.html#returer">Returer</a><a href="kundservice.html#skotsel">Skötselråd</a><a href="kundservice.html#storlekar">Storleksguide</a></div>
         <div><h4>Somniore</h4><a href="om-oss.html">Om oss</a><a href="material.html">Våra material</a><a href="om-oss.html#hantverk">Hantverk</a><a href="#">Instagram</a></div>
       </div>
     </div>
@@ -443,6 +452,7 @@
   });
 
   updateCount();
+  updateFavCount();
 
   window.SOM = {
     club, subscribe, fadeIn, productCard, toast, favs, favBtn, openCart: () => { renderCart(); togglePanel(cart, true); },
