@@ -120,10 +120,15 @@
         <a href="${pUrl('linne-orngott')}">2-pack örngott i linne</a>
         <a href="${catLink('lakanochset')}">Lakan &amp; lakanset</a>
       </div>
-      ${megaPair([
-        [pUrl('linne-lakanset', 'midnatt'), 'linen-blue-dusk.jpg', 'Djupt som en nordisk natt.', 'Shoppa Midnatt'],
-        [pUrl('percale-paslakanset', 'fjord'), 'percale-blue-candle.jpg', 'Stilla blått för långa kvällar.', 'Shoppa Fjord'],
-      ])}`,
+      <a class="mega-spot" href="${pUrl('linne-paslakanset', 'midnatt')}">
+        <span class="mega-spot__img"><img src="assets/img/linen-blue-dusk.jpg" alt="Säng bäddad i mörkblått linne i kvällsljus"></span>
+        <span class="mega-spot__copy">
+          <small>Ny färg</small>
+          <b>Midnatt</b>
+          <em>Vår djupaste nyans hittills — tvättat linne i nattblått, gjort för långa kvällar och sena morgnar.</em>
+          <span class="mega-spot__link">Upptäck Midnatt →</span>
+        </span>
+      </a>`,
     sangklader: `
       <div class="mega__col">
         ${megaHead('Lakan', catLink('lakanset'))}
