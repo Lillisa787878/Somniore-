@@ -54,8 +54,8 @@ const CATEGORIES = {
   drapa:       { name: 'Dra-på-lakan', plural: 'Dra-på-lakan', card: 'stack',   hover: 'detail', gallery: ['stack', 'detail', 'bed', 'bed2'] },
   orngott:     { name: '2-pack örngott', plural: '2-pack örngott',      card: 'pillows', hover: 'bed',    gallery: ['pillows', 'bed', 'detail', 'bed2'] },
   lakanset:    { name: 'Lakanset',     plural: 'Lakanset',     card: 'stack',   hover: 'room',   gallery: ['stack', 'room', 'bed', 'pillows', 'detail'] },
-  paslakanset: { name: 'Påslakanset',  plural: 'Påslakanset',  card: 'stack',   hover: 'bed',    gallery: ['bed', 'stack', 'pillows', 'bed2', 'room'] },
-  baddpaket:   { name: 'Bäddpaket',    plural: 'Bäddpaket',    card: 'stack',   hover: 'room',   gallery: ['room', 'stack', 'bed', 'pillows', 'bed2', 'detail'] },
+  paslakanset: { name: 'Påslakanset',  plural: 'Påslakanset',  card: 'bed',     hover: 'stack',    gallery: ['bed', 'stack', 'pillows', 'bed2', 'room'] },
+  baddpaket:   { name: 'Bäddpaket',    plural: 'Bäddpaket',    card: 'room',    hover: 'stack',   gallery: ['room', 'stack', 'bed', 'pillows', 'bed2', 'detail'] },
 };
 
 const SIZES = {

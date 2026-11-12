@@ -262,6 +262,7 @@ body.is-top .header:not(:hover):not(.mega-open) {
 }
 .product:hover .product__quick { opacity: 1; transform: none; }
 .product__name { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; line-height: 1.2; margin-top: .75rem; }
+.product__color { font-size: .84rem; color: var(--ink); margin-top: .15rem; }
 .product__meta { font-size: .84rem; color: var(--soft); margin-top: .1rem; }
 .product__swatches { display: flex; gap: 6px; margin-top: .55rem; }
 .product__swatches i, .product__swatches button { width: 14px; height: 14px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); outline: 1px solid transparent; outline-offset: 2px; transition: outline-color .2s; }

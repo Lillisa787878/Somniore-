@@ -412,27 +412,47 @@
     els.forEach(el => io.observe(el));
   }
 
-  /* ---------- Produktkort (används på flera sidor) ---------- */
-  function productCard(p) {
+  /* ---------- Produktkort (används på flera sidor) ----------
+     productCard(p)         → kortet visar produktens första färg
+     productCard(p, 'mossa') → ett kort för just den färgen        */
+  function productCard(p, colorArg) {
     const cat = CATEGORIES[p.cat];
-    const first = firstColorKey(p);
     const colors = colorsOf(p);
+    const perColor = typeof colorArg === 'string' && colors[colorArg];
+    const first = perColor ? colorArg : firstColorKey(p);
     return `
-    <article class="product" data-id="${p.id}">
+    <article class="product" data-id="${p.id}"${perColor ? ` data-color="${first}"` : ''}>
       ${favBtn(p.id)}
       <a href="${productUrl(p, first)}" class="product__media">
         ${p.tag ? `<span class="tag">${p.tag}</span>` : p.isNew ? '<span class="tag">Nyhet</span>' : ''}
-        <img src="${productImg(p, first, cat.card)}" alt="${p.name}" loading="lazy" class="main">
+        <img src="${productImg(p, first, cat.card)}" alt="${p.name} i ${colors[first].name}" loading="lazy" class="main">
         <img src="${productImg(p, first, cat.hover)}" alt="" class="alt" loading="lazy">
       </a>
       <a href="${productUrl(p, first)}" class="product__name">${p.name}</a>
+      ${perColor ? `<p class="product__color">${colors[first].name}</p>` : ''}
       <p class="product__meta">${formatPrice(p)}</p>
       <div class="product__swatches">
-        ${Object.entries(colors).map(([k, c], i) => `<button class="${k === first ? 'active' : ''}" style="--c:${c.hex}" data-color="${k}" aria-label="${c.name}" title="${c.name}"></button>`).join('')}
+        ${Object.entries(colors).map(([k, c]) => `<button class="${k === first ? 'active' : ''}" style="--c:${c.hex}" data-color="${k}" aria-label="${c.name}" title="${c.name}"></button>`).join('')}
       </div>
     </article>`;
   }
-  /* Färgprickar på produktkort byter bild och länk */
+  /* Delar upp produkter i ett kort per färg. Ordningen roterar färgerna så att
+     två kort bredvid varandra aldrig har samma färg och rutnätet blir varierat. */
+  function byColor(list, keep = () => true) {
+    const rows = [];
+    list.forEach((p, pi) => {
+      const keys = Object.keys(colorsOf(p));
+      keys.forEach((color, ci) => {
+        if (!keep(colorsOf(p)[color], color)) return;
+        const round = ((ci - pi) % keys.length + keys.length) % keys.length;
+        rows.push({ p, color, pi, ci, round });
+      });
+    });
+    return rows.sort((a, b) => a.round - b.round || a.pi - b.pi);
+  }
+  const colorCards = rows => rows.map(r => productCard(r.p, r.color)).join('');
+
+  /* Färgprickar på produktkort byter bild, länk och färgnamn */
   document.addEventListener('click', e => {
     const sw = e.target.closest('.product__swatches button');
     if (!sw) return;
@@ -443,6 +463,8 @@
     card.querySelector('img.main').src = productImg(p, sw.dataset.color, cat.card);
     card.querySelector('img.alt').src = productImg(p, sw.dataset.color, cat.hover);
     card.querySelectorAll('a').forEach(a => a.href = productUrl(p, sw.dataset.color));
+    const label = card.querySelector('.product__color');
+    if (label) label.textContent = colorsOf(p)[sw.dataset.color].name;
   });
 
   /* Sidfot: fällbara listor på mobil */
@@ -455,7 +477,7 @@
   updateFavCount();
 
   window.SOM = {
-    club, subscribe, fadeIn, productCard, toast, favs, favBtn, openCart: () => { renderCart(); togglePanel(cart, true); },
+    club, subscribe, fadeIn, productCard, byColor, colorCards, toast, favs, favBtn, openCart: () => { renderCart(); togglePanel(cart, true); },
     addToCart(item) {
       const list = load();
       const same = list.find(i => i.id === item.id && i.color === item.color && i.size === item.size);

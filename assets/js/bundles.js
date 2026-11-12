@@ -26,6 +26,7 @@
         <img src="${productImg(p, color, 'room')}" alt="" class="alt" loading="lazy">
       </a>
       <a href="${url}" class="product__name">${p.name}</a>
+      <p class="product__color">${colorsOf(p)[color].name}</p>
       <p class="product__meta">${formatPrice(p)}</p>
       <div class="product__swatches">
         ${shown.map(([k, c]) => `<button class="${k === color ? 'active' : ''}" style="--c:${c.hex}" data-color="${k}" aria-label="${c.name}" title="${c.name}"></button>`).join('')}

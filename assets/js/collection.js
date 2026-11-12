@@ -56,23 +56,18 @@
 
   function render() {
     let list = base.filter(p => state.chip === 'alla' || (chipMode === 'cat' ? p.cat === state.chip : p.material === state.chip));
-    if (state.color !== 'alla') list = list.filter(p => Object.values(colorsOf(p)).some(c => c.group === state.color));
     if (state.sort === 'name') list = [...list].sort((a, b) => a.name.localeCompare(b.name, 'sv'));
     if (state.sort === 'material') list = [...list].sort((a, b) => a.material.localeCompare(b.material));
     if (state.sort === 'featured') list = [...list].sort((a, b) => (b.best ? 1 : 0) - (a.best ? 1 : 0));
 
-    grid.innerHTML = list.map(SOM.productCard).join('');
-    empty.hidden = list.length > 0;
-    document.getElementById('count').textContent = `${list.length} ${list.length === 1 ? 'produkt' : 'produkter'}`;
+    /* Ett kort per färg (som Parachute). Färgfiltret visar bara korten i vald färg. */
+    let rows = SOM.byColor(list, c => state.color === 'alla' || c.group === state.color);
+    /* Sortering på namn/material: håll ihop produktens färger */
+    if (state.sort !== 'featured') rows = rows.sort((a, b) => a.pi - b.pi || a.round - b.round);
 
-    /* Visa vald färg direkt på korten */
-    if (state.color !== 'alla') {
-      grid.querySelectorAll('.product').forEach(card => {
-        const p = productById(card.dataset.id);
-        const match = Object.entries(colorsOf(p)).find(([, c]) => c.group === state.color);
-        if (match) card.querySelector(`[data-color="${match[0]}"]`)?.click();
-      });
-    }
+    grid.innerHTML = SOM.colorCards(rows);
+    empty.hidden = rows.length > 0;
+    document.getElementById('count').textContent = `${rows.length} ${rows.length === 1 ? 'produkt' : 'produkter'}`;
 
     const url = new URL(location.href);
     url.searchParams.set('c', key);
