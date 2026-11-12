@@ -8,69 +8,95 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=61">
+  <link rel="stylesheet" href="styles.css?v=64">
 </head>
 <body>
   <div id="site-header"></div>
 
   <main class="pd-page">
     <nav class="crumbs pd-crumbs" id="crumbs" aria-label="Brödsmulor"></nav>
+    <a class="pd-back" id="backLink" href="kollektion.html"></a>
 
-    <!-- ============ Köpdel ============ -->
+    <!-- ============ Köpdel: bilder till vänster, val till höger ============ -->
     <section class="pd">
-      <div class="pd__media">
+      <div class="pd__media" id="media">
         <div class="pd__thumbs" id="thumbs"></div>
         <div class="pd__main">
           <img id="mainImg" src="" alt="">
           <button class="pd__nav pd__nav--prev" id="imgPrev" aria-label="Föregående bild"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
           <button class="pd__nav pd__nav--next" id="imgNext" aria-label="Nästa bild"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
-          <span class="pd__counter" id="imgCounter"></span>
         </div>
+        <div class="pd__track" id="track"></div>
+        <span class="pd__tag" id="pTag" hidden></span>
       </div>
 
       <div class="pd__info">
-        <p class="pd__tag" id="pTag" hidden></p>
         <h1 class="pd__title" id="pTitle"></h1>
-        <p class="pd__origin"><em>Vävt i Portugal</em> <span>|</span> <span id="pSpec"></span></p>
-        <p class="pd__price" id="pPrice"></p>
-        <p class="pd__lead" id="pLead"></p>
+        <p class="pd__spec" id="pSpec"></p>
+        <div class="pd__price">
+          <b id="pPrice"></b>
+          <span>Inkl. moms</span>
+        </div>
 
         <div class="pd__opt">
-          <p class="pd__label"><span>Färg:</span> <strong id="pColorName"></strong></p>
+          <p class="pd__label">Färg: <span id="pColorName"></span></p>
           <div class="pd__swatches" id="pSwatches"></div>
         </div>
 
         <div class="pd__opt" id="typeOpt" hidden>
-          <p class="pd__label"><span>Typ</span></p>
-          <div class="pd__boxes pd__boxes--2" id="pTypes"></div>
+          <p class="pd__label">Typ: <span id="pTypeName"></span></p>
+          <div class="pd__boxes" id="pTypes"></div>
         </div>
 
         <div class="pd__opt">
           <div class="pd__label-row">
-            <p class="pd__label"><span>Storlek:</span> <strong id="pSizeName">Välj storlek</strong></p>
+            <p class="pd__label">Storlek: <span id="pSizeName"></span></p>
             <a href="kundservice.html#storlekar" class="pd__guide">Storleksguide</a>
           </div>
           <div class="pd__boxes" id="pSizes"></div>
         </div>
 
-        <div class="pd__buy">
-          <div class="qty" aria-label="Antal">
-            <button id="qtyMinus" aria-label="Minska">−</button>
-            <span id="qty">1</span>
-            <button id="qtyPlus" aria-label="Öka">+</button>
-          </div>
-          <button class="pd__add" id="addBtn">Lägg i varukorg</button>
-        </div>
+        <p class="pd__stock"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.7 2.7L16 9.7"/></svg> Leverans inom 2–5 arbetsdagar</p>
+        <button class="pd__add" id="addBtn">Lägg i varukorg</button>
         <p class="pd__error" id="sizeError" role="alert"></p>
-        <p class="pd__ship"><span>Fri frakt över 1000 kr</span> 30 dagars öppet köp · Leverans 2–5 arbetsdagar</p>
-        <p class="pd__club"><a href="konto.html">Somniore Club</a> · Samla 1 poäng per krona på köpet</p>
+
+        <ul class="pd__perks">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></svg> Fri frakt över 1000 kr</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 108-8 8.5 8.5 0 00-6 2.5L4 8.5"/><path d="M4 4v4.5h4.5"/></svg> 30 dagars öppet köp</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.5 5.2 5.7.8-4.1 4 1 5.6L12 16.4l-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/></svg> <span><a href="konto.html">Somniore Club</a> — samla poäng på köpet</span></li>
+        </ul>
+
+        <div class="pd__about">
+          <p id="pStory"></p>
+          <h3>Så känns det</h3>
+          <p id="pFeel"></p>
+          <h3>Så ser det ut</h3>
+          <p id="pLook"></p>
+        </div>
+        <div class="pd__chips" id="chipsRow"></div>
 
         <div class="pd__acc" id="accordion"></div>
+
+        <!-- Jämförelse mellan materialen (som Quince "Beyond compare") -->
+        <div class="pd-compare">
+          <p class="pd-h">Linne eller percale?</p>
+          <table class="pd-compare__table" id="compare"></table>
+          <a href="material.html" class="pd__link">Läs mer om våra material</a>
+        </div>
       </div>
     </section>
 
-    <!-- ============ Tre fördelar ============ -->
-    <section class="pd-benefits" id="benefits"></section>
+    <!-- ============ Fullborda looken ============ -->
+    <section class="rail pd-rail">
+      <div class="rail__head">
+        <h2 class="pd-h">Fullborda looken</h2>
+        <div class="rail__arrows">
+          <button class="arrow" id="lookPrev" aria-label="Föregående"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="arrow" id="lookNext" aria-label="Nästa"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="rail__track" id="lookTrack"></div>
+    </section>
 
     <!-- ============ Hantverk ============ -->
     <section class="pd-maker">
@@ -84,33 +110,29 @@
       </div>
     </section>
 
-    <!-- ============ Flikar ============ -->
-    <section class="pd-tabs">
-      <div class="pd-tabs__nav" role="tablist">
-        <button class="active" role="tab" data-tab="frakt">Frakt &amp; returer</button>
-        <button role="tab" data-tab="detaljer">Detaljer</button>
-        <button role="tab" data-tab="skotsel">Skötselråd</button>
-      </div>
-      <div class="pd-tabs__panel" id="tabPanel"></div>
-    </section>
-
     <!-- ============ Inspiration ============ -->
     <section class="pd-insp">
-      <h2 class="pd-section-title"><span>Inspiration</span></h2>
+      <h2 class="pd-h">Inspiration</h2>
       <div class="pd-insp__grid" id="insp"></div>
     </section>
 
-    <!-- ============ Köps ofta tillsammans ============ -->
-    <section class="pd-related">
-      <h2 class="pd-section-title"><span>Köps ofta tillsammans</span></h2>
-      <div class="grid grid--4" id="related"></div>
+    <!-- ============ Mer att upptäcka ============ -->
+    <section class="rail pd-rail">
+      <div class="rail__head">
+        <h2 class="pd-h">Mer att upptäcka</h2>
+        <div class="rail__arrows">
+          <button class="arrow" id="morePrev" aria-label="Föregående"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="arrow" id="moreNext" aria-label="Nästa"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="rail__track" id="moreTrack"></div>
     </section>
   </main>
 
   <div id="site-footer"></div>
 
   <script src="assets/js/data.js?v=62"></script>
-  <script src="assets/js/layout.js?v=61"></script>
-  <script src="assets/js/product.js?v=61"></script>
+  <script src="assets/js/layout.js?v=63"></script>
+  <script src="assets/js/product.js?v=64"></script>
 </body>
 </html>
