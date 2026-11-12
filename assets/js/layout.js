@@ -114,7 +114,7 @@
 
   /* ---------- Sidhuvud ---------- */
   const header = `
-  <div class="announce"><p>Fri frakt på alla beställningar <span>|</span> <b class="more">30 dagars öppet köp</b></p></div>
+  <div class="announce"><p>Fri frakt över 1000 kr <span>|</span> <b class="more">30 dagars öppet köp</b></p></div>
   <header class="header" id="header">
     <div class="header__bar">
       <div class="m-left">
@@ -191,7 +191,7 @@
       </div>
       <div class="cart__items" id="cartItems"></div>
       <div class="cart__foot">
-        <div class="cart__row"><span>Frakt</span><span>Fri</span></div>
+        <div class="cart__row"><span>Frakt</span><span>Fri över 1000 kr</span></div>
         <div class="cart__row cart__total"><span>Totalt</span><span id="cartTotal">—</span></div>
         <button class="btn btn--dark cart__checkout" id="checkoutBtn">Till kassan</button>
         <p class="cart__club">${me ? `Du har <b>${me.points || 0}</b> poäng · <a href="konto.html#poang">Lös in</a>` : `<a href="konto.html">Logga in</a> och samla poäng på ditt köp`}</p>

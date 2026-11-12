@@ -160,7 +160,7 @@
   const sections = [
     ['Berättelse', `<p>${STORY}</p><p>Vävt i Guimarães — Portugals textilhjärta — där kunnandet gått i arv i generationer.</p>${includes}${note}<p>Vill du jämföra material? Läs mer i <a href="material.html">materialguiden</a>.</p>`, true],
     ['Produktdetaljer', detailsTable],
-    ['Frakt & returer', '<p><strong>Fri frakt</strong> på alla beställningar inom Sverige. Leverans inom 2–5 arbetsdagar.</p><p><strong>30 dagars öppet köp.</strong> Sov på saken — passar det inte returnerar du enkelt.</p>'],
+    ['Frakt & returer', '<p><strong>Fri frakt</strong> på beställningar över 1000 kr inom Sverige. Leverans inom 2–5 arbetsdagar.</p><p><strong>30 dagars öppet köp.</strong> Sov på saken — passar det inte returnerar du enkelt.</p>'],
   ];
   $('accordion').innerHTML = sections.map(([t, body, open]) =>
     `<details${open ? ' open' : ''}><summary>${t}</summary><div>${body}</div></details>`).join('');
@@ -176,7 +176,7 @@
   /* ---------- Flikar ---------- */
   const TABS = {
     frakt: ['Frakt & returer', [
-      ['Fri frakt', 'Fri frakt på alla beställningar inom Sverige. Leverans inom 2–5 arbetsdagar.'],
+      ['Fri frakt', 'Fri frakt på beställningar över 1000 kr inom Sverige. Leverans inom 2–5 arbetsdagar.'],
       ['30 dagars öppet köp', 'Returnera inom 30 dagar. Skicka tillbaka otvättat och i originalförpackning.'],
       ['Frågor?', 'Vår kundservice hjälper dig gärna — <a href="kundservice.html">kontakta oss</a>.']]],
     detaljer: ['Detaljer', [
