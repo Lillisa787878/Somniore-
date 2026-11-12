@@ -6,6 +6,7 @@
 (function () {
   const params = new URLSearchParams(location.search);
   const p = productById(params.get('p')) || PRODUCTS[0];
+  document.querySelector('.pd__main').insertAdjacentHTML('beforeend', SOM.favBtn(p.id));
   const colors = colorsOf(p);
   const cat = CATEGORIES[p.cat];
   const mat = MATERIALS[p.material];

@@ -1030,3 +1030,19 @@ a.earn-list__go { color: var(--ink); text-decoration: underline; text-underline-
 #mega-bad .mega__inner { grid-template-columns: minmax(160px, 220px) minmax(200px, 280px) 200px; }
 @media (max-width: 1100px) { #mega-bad .mega__inner { grid-template-columns: 220px 280px; } }
 .mega__more { font-size: .88rem; font-weight: 500; margin-top: .4rem; }
+
+/* ---------- Favorit-hjärta på produktbilder ---------- */
+.product { position: relative; }
+.fav {
+  position: absolute; top: 10px; right: 10px; z-index: 3;
+  width: 40px; height: 40px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  display: grid; place-items: center; background: rgba(250,248,244,.92); color: var(--ink);
+  transition: transform .2s ease, background .2s ease;
+}
+.fav:hover { transform: scale(1.06); background: #fff; }
+.fav svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+.fav.on svg { fill: currentColor; }
+.fav.on { animation: favPop .35s ease; }
+@keyframes favPop { 50% { transform: scale(1.18); } }
+.pd__main .fav { top: 14px; right: 14px; width: 44px; height: 44px; }
+@media (max-width: 700px) { .fav { width: 34px; height: 34px; top: 8px; right: 8px; } .fav svg { width: 17px; height: 17px; } .pd__main .fav { width: 40px; height: 40px; top: 12px; right: 12px; } .pd__main .fav svg { width: 19px; height: 19px; } }

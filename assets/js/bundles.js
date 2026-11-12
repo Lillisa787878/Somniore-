@@ -19,6 +19,7 @@
     const url = productUrl(p, color);
     return `
     <article class="product bp-card" data-id="${p.id}" data-mat="${p.material}" data-big="${p.id.includes('stort')}">
+      ${SOM.favBtn(p.id)}
       <a href="${url}" class="product__media">
         <span class="tag">${tag}</span>
         <img src="${productImg(p, color, 'stack')}" alt="${p.name} i ${colorsOf(p)[color].name}" loading="lazy" class="main">

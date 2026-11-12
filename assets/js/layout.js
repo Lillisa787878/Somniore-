@@ -48,6 +48,32 @@
     close: '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
   };
 
+  /* ---------- Favoriter (hjärtat på produktbilder) ---------- */
+  const FAV_KEY = 'somniore-favs';
+  const favs = {
+    list() { try { return JSON.parse(localStorage.getItem(FAV_KEY)) || []; } catch { return []; } },
+    has(id) { return this.list().includes(id); },
+    toggle(id) {
+      const l = this.list(); const i = l.indexOf(id);
+      if (i >= 0) l.splice(i, 1); else l.push(id);
+      try { localStorage.setItem(FAV_KEY, JSON.stringify(l)); } catch {}
+      return i < 0;
+    },
+  };
+  const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.6-4.6-9.2-9.4C1.7 7.5 3.9 4.4 7.2 4.4c2 0 3.6 1.1 4.8 2.9 1.2-1.8 2.8-2.9 4.8-2.9 3.3 0 5.5 3.1 4.4 6.5-1.6 4.8-9.2 9.4-9.2 9.4z"/></svg>';
+  const favBtn = id => { const on = favs.has(id); return `<button type="button" class="fav${on ? ' on' : ''}" data-fav="${id}" aria-pressed="${on}" aria-label="${on ? 'Ta bort från favoriter' : 'Spara som favorit'}">${HEART}</button>`; };
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-fav]');
+    if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const on = favs.toggle(b.dataset.fav);
+    document.querySelectorAll(`[data-fav="${b.dataset.fav}"]`).forEach(x => {
+      x.classList.toggle('on', on); x.setAttribute('aria-pressed', on);
+      x.setAttribute('aria-label', on ? 'Ta bort från favoriter' : 'Spara som favorit');
+    });
+    toast(on ? 'Sparad som favorit' : 'Borttagen från favoriter');
+  });
+
   const catLink = c => `kollektion.html?c=${c}`;
   const colDots = (mat) => Object.entries(COLORS[mat]).map(([k, c]) =>
     `<a href="kollektion.html?c=${mat}&farg=${c.group}"><i style="--c:${c.hex}"></i>${c.name}</a>`).join('');
@@ -384,6 +410,7 @@
     const colors = colorsOf(p);
     return `
     <article class="product" data-id="${p.id}">
+      ${favBtn(p.id)}
       <a href="${productUrl(p, first)}" class="product__media">
         ${p.tag ? `<span class="tag">${p.tag}</span>` : p.isNew ? '<span class="tag">Nyhet</span>' : ''}
         <img src="${productImg(p, first, cat.card)}" alt="${p.name}" loading="lazy" class="main">
@@ -418,7 +445,7 @@
   updateCount();
 
   window.SOM = {
-    club, subscribe, fadeIn, productCard, toast, openCart: () => { renderCart(); togglePanel(cart, true); },
+    club, subscribe, fadeIn, productCard, toast, favs, favBtn, openCart: () => { renderCart(); togglePanel(cart, true); },
     addToCart(item) {
       const list = load();
       const same = list.find(i => i.id === item.id && i.color === item.color && i.size === item.size);
