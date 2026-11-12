@@ -358,6 +358,9 @@
       const valid = TABS.includes(key) ? key : 'oversikt';
       document.querySelectorAll('.panel').forEach(p => p.hidden = p.dataset.panel !== valid);
       document.querySelectorAll('.portal__nav a').forEach(a => a.classList.toggle('active', a.dataset.tab === valid));
+      /* Mobil: scrolla fram vald flik i menyraden */
+      const nav = document.querySelector('.portal__nav'), act = nav.querySelector('.active');
+      if (act && nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: act.offsetLeft - 16, behavior: 'smooth' });
     }
     window.addEventListener('hashchange', () => { showTab(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
