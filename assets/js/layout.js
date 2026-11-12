@@ -120,14 +120,15 @@
         <a href="${pUrl('linne-orngott')}">2-pack örngott i linne</a>
         <a href="${catLink('lakanochset')}">Lakan &amp; lakanset</a>
       </div>
-      <a class="mega-spot" href="${pUrl('linne-paslakanset', 'midnatt')}">
-        <span class="mega-spot__img"><img src="assets/img/linen-blue-dusk.jpg" alt="Säng bäddad i mörkblått linne i kvällsljus"></span>
-        <span class="mega-spot__copy">
-          <small>Ny färg</small>
-          <b>Midnatt</b>
-          <em>Vår djupaste nyans hittills — tvättat linne i nattblått, gjort för långa kvällar och sena morgnar.</em>
-          <span class="mega-spot__link">Upptäck Midnatt →</span>
-        </span>
+      <div class="mega__col mega__col--text">
+        <span class="mega__head mega__head--plain">Ny färg</span>
+        <p>Midnatt — vår djupaste nyans hittills. Tvättat linne i nattblått, gjort för långa kvällar och sena morgnar.</p>
+        <a href="${pUrl('linne-paslakanset', 'midnatt')}" class="mega__more">Upptäck Midnatt →</a>
+      </div>
+      <a class="mega__feature" href="${pUrl('linne-lakanset', 'midnatt')}">
+        <img src="assets/img/linen-blue-dusk.jpg" alt="">
+        <span class="mega__feature-title">Djupt som<br>en nordisk natt.</span>
+        <span class="mega__feature-link">→ Shoppa Midnatt</span>
       </a>`,
     sangklader: `
       <div class="mega__col">
