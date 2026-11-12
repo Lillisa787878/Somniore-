@@ -60,15 +60,15 @@ const CATEGORIES = {
 
 const SIZES = {
   lakan: ['150×260', '240×260', '270×270'],
-  drapa: ['90×200', '120×200', '140×200', '160×200', '180×200'],
-  lakanset: ['90×200', '140×200', '160×200', '180×200'],
+  drapa: ['90×200', '120×200', '180×200'],
+  lakanset: ['90×200', '180×200'],
   orngott: ['50×60', '50×70', '65×65'],
   /* Påslakanset: enkel = 1 påslakan + 1 örngott, dubbel = 1 dubbelpåslakan + 2 örngott */
   paslakanset: [
     { t: 'Enkel', d: '150×210 + 1 örngott' },
     { t: 'Dubbel', d: '220×220 + 2 örngott' },
   ],
-  baddpaket: ['90×200', '140×200', '160×200', '180×200'],   // sängens bredd × längd
+  baddpaket: ['90×200', '180×200'],   // sängens bredd × längd
 };
 
 /* ---------- Produkter ---------- */
