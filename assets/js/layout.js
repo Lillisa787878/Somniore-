@@ -412,6 +412,39 @@
     els.forEach(el => io.observe(el));
   }
 
+  /* ---------- Snabbköp: kassen nere till höger på produktbilden ---------- */
+  const QUICK_BTN = `<button type="button" class="quick" data-quick aria-label="Snabbköp — välj storlek"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8h15l-1.3 13H5.8z"/><path d="M8.5 8V6.5a3.5 3.5 0 017 0V8"/><path d="M12 11.5v6M9 14.5h6"/></svg></button>`;
+  function closeQuick(except) {
+    document.querySelectorAll('.quick-panel').forEach(el => { if (el !== except) el.remove(); });
+  }
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-quick]');
+    const size = e.target.closest('[data-qsize]');
+    const close = e.target.closest('[data-qclose]');
+    if (!btn && !size && !close) { if (!e.target.closest('.quick-panel')) closeQuick(); return; }
+    e.preventDefault(); e.stopPropagation();
+    const card = e.target.closest('.product');
+    const p = productById(card.dataset.id);
+    const color = card.querySelector('.product__swatches .active')?.dataset.color || card.dataset.color || firstColorKey(p);
+    if (close) { closeQuick(); return; }
+    if (btn) {
+      const open = card.querySelector('.quick-panel');
+      closeQuick(); if (open) return;
+      const sizes = SIZES[p.cat].map(sizeInfo);
+      card.querySelector('.product__frame').insertAdjacentHTML('beforeend', `
+        <div class="quick-panel" role="dialog" aria-label="Välj storlek">
+          <div class="quick-panel__head"><span>Välj storlek <small>· ${colorsOf(p)[color].name}</small></span><button type="button" data-qclose aria-label="Stäng">${ICON.close}</button></div>
+          <div class="quick-panel__sizes">${sizes.map(s => `<button type="button" data-qsize="${s.label}">${s.title}${s.sub !== 'cm' ? `<small>${s.sub}</small>` : ''}</button>`).join('')}</div>
+        </div>`);
+      return;
+    }
+    SOM.addToCart({ id: p.id, color, size: size.dataset.qsize, qty: 1 });
+    closeQuick();
+    toast(`${p.name} · ${colorsOf(p)[color].name} lades i varukorgen`);
+    setTimeout(() => { renderCart(); togglePanel(cart, true); }, 300);
+  }, true);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQuick(); });
+
   /* ---------- Produktkort (används på flera sidor) ----------
      productCard(p)         → kortet visar produktens första färg
      productCard(p, 'mossa') → ett kort för just den färgen        */
@@ -422,12 +455,15 @@
     const first = perColor ? colorArg : firstColorKey(p);
     return `
     <article class="product" data-id="${p.id}"${perColor ? ` data-color="${first}"` : ''}>
-      ${favBtn(p.id)}
-      <a href="${productUrl(p, first)}" class="product__media">
-        ${p.tag ? `<span class="tag">${p.tag}</span>` : p.isNew ? '<span class="tag">Nyhet</span>' : ''}
-        <img src="${productImg(p, first, cat.card)}" alt="${p.name} i ${colors[first].name}" loading="lazy" class="main">
-        <img src="${productImg(p, first, cat.hover)}" alt="" class="alt" loading="lazy">
-      </a>
+      <div class="product__frame">
+        ${favBtn(p.id)}
+        <a href="${productUrl(p, first)}" class="product__media">
+          ${p.tag ? `<span class="tag">${p.tag}</span>` : p.isNew ? '<span class="tag">Nyhet</span>' : ''}
+          <img src="${productImg(p, first, cat.card)}" alt="${p.name} i ${colors[first].name}" loading="lazy" class="main">
+          <img src="${productImg(p, first, cat.hover)}" alt="" class="alt" loading="lazy">
+        </a>
+        ${QUICK_BTN}
+      </div>
       <a href="${productUrl(p, first)}" class="product__name">${p.name}</a>
       ${perColor ? `<p class="product__color">${colors[first].name}</p>` : ''}
       <p class="product__meta">${formatPrice(p)}</p>
@@ -477,7 +513,7 @@
   updateFavCount();
 
   window.SOM = {
-    club, subscribe, fadeIn, productCard, byColor, colorCards, toast, favs, favBtn, openCart: () => { renderCart(); togglePanel(cart, true); },
+    club, subscribe, fadeIn, productCard, byColor, colorCards, toast, favs, favBtn, quickBtn: QUICK_BTN, openCart: () => { renderCart(); togglePanel(cart, true); },
     addToCart(item) {
       const list = load();
       const same = list.find(i => i.id === item.id && i.color === item.color && i.size === item.size);

@@ -19,12 +19,15 @@
     const url = productUrl(p, color);
     return `
     <article class="product bp-card" data-id="${p.id}" data-mat="${p.material}" data-big="${p.id.includes('stort')}">
-      ${SOM.favBtn(p.id)}
-      <a href="${url}" class="product__media">
-        <span class="tag">${tag}</span>
-        <img src="${productImg(p, color, 'stack')}" alt="${p.name} i ${colorsOf(p)[color].name}" loading="lazy" class="main">
-        <img src="${productImg(p, color, 'room')}" alt="" class="alt" loading="lazy">
-      </a>
+      <div class="product__frame">
+        ${SOM.favBtn(p.id)}
+        <a href="${url}" class="product__media">
+          <span class="tag">${tag}</span>
+          <img src="${productImg(p, color, 'stack')}" alt="${p.name} i ${colorsOf(p)[color].name}" loading="lazy" class="main">
+          <img src="${productImg(p, color, 'room')}" alt="" class="alt" loading="lazy">
+        </a>
+        ${SOM.quickBtn}
+      </div>
       <a href="${url}" class="product__name">${p.name}</a>
       <p class="product__color">${colorsOf(p)[color].name}</p>
       <p class="product__meta">${formatPrice(p)}</p>
