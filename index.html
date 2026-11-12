@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=80">
+  <link rel="stylesheet" href="styles.css?v=82">
 </head>
 <body class="has-hero is-top">
 
@@ -23,7 +23,11 @@
       <a href="kollektion.html?c=alla" class="btn btn--light hero__btn">Upptäck kollektionen</a>
     </section>
 
-    <!-- ============ STATEMENT ============ -->
+    <!-- ============ INLEDNING (stor text, högra halvan) ============ -->
+    <section class="intro-note">
+      <p>Sängkläder i tvättat linne och krispig percale, vävda i Portugal av naturliga fibrer — gjorda för de lugna stunderna i början och slutet av varje dag.</p>
+    </section>
+
     <!-- ============ BÄSTSÄLJARE ============ -->
     <section class="rail" id="bastsaljare">
       <div class="rail__head">
@@ -35,6 +39,40 @@
       </div>
       <div class="rail__track" id="productTrack"><!-- fylls av script.js --></div>
       <a href="kollektion.html?c=bastsaljare" class="btn btn--dark rail__cta">Shoppa alla bästsäljare</a>
+    </section>
+
+    <!-- ============ BÄDDPAKET (två stora bilder) ============ -->
+    <section class="duo">
+      <a href="baddpaket.html?m=linne" class="duo__tile">
+        <img src="assets/img/linen-blue-beige.jpg" alt="Säng bäddad i mörkblått och beige linne" loading="lazy">
+        <span class="img-label">Bäddpaket i linne</span>
+      </a>
+      <a href="baddpaket.html?m=percale" class="duo__tile">
+        <img src="assets/img/percale-grey-dark-wall.jpg" alt="Säng bäddad i ljusgrå percale mot mörk vägg" loading="lazy">
+        <span class="img-label">Bäddpaket i percale</span>
+      </a>
+    </section>
+
+    <!-- ============ VÅRA TYGER (tre bilder) ============ -->
+    <section class="fabrics">
+      <div class="fabrics__head">
+        <h2 class="fabrics__title">Tyger att leva med.</h2>
+        <p>Svalt och krispigt eller mjukt och levande — välj den vävning som passar din sömn.</p>
+      </div>
+      <div class="fabrics__grid">
+        <a href="kollektion.html?c=percale" class="fabrics__tile">
+          <img src="assets/img/percale-green-above.jpg" alt="Närbild på grön percale" loading="lazy">
+          <span class="img-label">Percale</span>
+        </a>
+        <a href="kollektion.html?c=linne" class="fabrics__tile">
+          <img src="assets/img/linen-blue-bed.jpg" alt="Närbild på mörkblått tvättat linne" loading="lazy">
+          <span class="img-label">Linne</span>
+        </a>
+        <a href="material.html" class="fabrics__tile">
+          <img src="assets/img/linen-hand.jpg" alt="Hand som vilar mot mjukt tvättat linne" loading="lazy">
+          <span class="img-label">Jämför material</span>
+        </a>
+      </div>
     </section>
 
     <!-- ============ EDITORIAL 1 ============ -->
