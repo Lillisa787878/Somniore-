@@ -88,7 +88,42 @@
   const megaHead = (title, href) => `<a class="mega__head" href="${href}">${title} <span>→</span></a>`;
 
   /* ---------- Megamenyer ---------- */
+  const pUrl = (id, color) => productUrl(productById(id), color);
+  /* Två stora bilder med rubrik och länk (som Parachute) */
+  const megaPair = items => items.map(([href, img, title, link]) => `
+      <a class="mega__feature mega__feature--big" href="${href}">
+        <img src="assets/img/${img}" alt="">
+        <span class="mega__feature-title">${title}</span>
+        <span class="mega__feature-link">→ ${link}</span>
+      </a>`).join('');
   const MEGA = {
+    bastsaljare: `
+      <div class="mega__col">
+        ${megaHead('Bästsäljare', catLink('bastsaljare'))}
+        <a href="${pUrl('linne-lakanset')}">Lakanset i linne</a>
+        <a href="${pUrl('linne-paslakanset')}">Påslakanset i linne</a>
+        <a href="${pUrl('percale-lakanset')}">Lakanset i percale</a>
+        <a href="${pUrl('percale-paslakanset')}">Påslakanset i percale</a>
+        <a href="baddpaket.html">Bäddpaket</a>
+        <a href="${catLink('orngott')}">2-pack örngott</a>
+      </div>
+      ${megaPair([
+        [pUrl('linne-paslakanset', 'sand'), 'linen-beige-bed2.jpg', 'Mjukare för varje natt.', 'Shoppa påslakanset i linne'],
+        [pUrl('percale-lakanset', 'vit'), 'percale-white-bed.jpg', 'Krispigt som på hotell.', 'Shoppa lakanset i percale'],
+      ])}`,
+    nyheter: `
+      <div class="mega__col">
+        ${megaHead('Nyheter', catLink('nyheter'))}
+        <a href="${catLink('alla')}&farg=bla">Nya blå nyanser</a>
+        <a href="${pUrl('linne-paslakanset', 'midnatt')}">Midnatt i linne</a>
+        <a href="${pUrl('percale-paslakanset', 'fjord')}">Fjord i percale</a>
+        <a href="${pUrl('linne-orngott')}">2-pack örngott i linne</a>
+        <a href="${catLink('lakanochset')}">Lakan &amp; lakanset</a>
+      </div>
+      ${megaPair([
+        [pUrl('linne-lakanset', 'midnatt'), 'linen-blue-dusk.jpg', 'Djupt som en nordisk natt.', 'Shoppa Midnatt'],
+        [pUrl('percale-paslakanset', 'fjord'), 'percale-blue-candle.jpg', 'Stilla blått för långa kvällar.', 'Shoppa Fjord'],
+      ])}`,
     sangklader: `
       <div class="mega__col">
         ${megaHead('Lakan', catLink('lakanset'))}
@@ -155,8 +190,8 @@
         <button class="tool m-search" aria-label="Sök">${ICON.search}</button>
       </div>
       <nav class="nav" aria-label="Huvudmeny">
-        <a href="${catLink('bastsaljare')}" class="nav__link">Bästsäljare</a>
-        <a href="${catLink('nyheter')}" class="nav__link">Nyheter</a>
+        <div class="nav__item" data-mega="bastsaljare"><a href="${catLink('bastsaljare')}" class="nav__link">Bästsäljare</a></div>
+        <div class="nav__item" data-mega="nyheter"><a href="${catLink('nyheter')}" class="nav__link">Nyheter</a></div>
         <div class="nav__item" data-mega="sangklader"><a href="${catLink('alla')}" class="nav__link">Sängkläder</a></div>
         <div class="nav__item" data-mega="bad"><a href="${catLink('bad')}" class="nav__link">Bad</a></div>
       </nav>
@@ -182,8 +217,18 @@
         <button class="drawer__close" id="drawerClose" aria-label="Stäng meny">${ICON.close}</button>
       </div>
       <nav class="drawer__nav">
-        <a href="${catLink('bastsaljare')}">Bästsäljare</a>
-        <a href="${catLink('nyheter')}">Nyheter</a>
+        <details><summary>Bästsäljare</summary>
+          <div class="drawer__sub">
+            <a href="${pUrl('linne-lakanset')}">Lakanset i linne</a><a href="${pUrl('linne-paslakanset')}">Påslakanset i linne</a><a href="${pUrl('percale-lakanset')}">Lakanset i percale</a><a href="${pUrl('percale-paslakanset')}">Påslakanset i percale</a><a href="baddpaket.html">Bäddpaket</a><a href="${catLink('orngott')}">2-pack örngott</a>
+            <a href="${catLink('bastsaljare')}" class="drawer__all">Alla bästsäljare</a>
+          </div>
+        </details>
+        <details><summary>Nyheter</summary>
+          <div class="drawer__sub">
+            <a href="${pUrl('linne-paslakanset', 'midnatt')}">Midnatt i linne</a><a href="${pUrl('percale-paslakanset', 'fjord')}">Fjord i percale</a><a href="${pUrl('linne-orngott')}">2-pack örngott i linne</a>
+            <a href="${catLink('nyheter')}" class="drawer__all">Alla nyheter</a>
+          </div>
+        </details>
         <details><summary>Sängkläder</summary>
           <div class="drawer__sub">
             <p>Lakan</p>
