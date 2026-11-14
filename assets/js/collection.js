@@ -15,6 +15,7 @@
 
   /* Sidhuvud för kollektionen */
   document.title = `${col.title} — Somniore`;
+  SOM.setSeo({ url: `kollektion.html?c=${key}`, title: document.title, desc: `${col.title} från Somniore. ${col.desc}` });
   document.getElementById('colTitle').textContent = col.title;
   document.getElementById('colCrumb').textContent = col.title;
   if (col.parent) document.getElementById('colCrumb').insertAdjacentHTML('beforebegin', `<a href="kollektion.html?c=${col.parent}">${COLLECTIONS[col.parent].title}</a> <span>/</span> `);

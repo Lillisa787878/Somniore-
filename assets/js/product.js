@@ -38,6 +38,7 @@
 
   /* ---------- Rubrik, brödsmulor, pris ---------- */
   document.title = `${p.name} — Somniore`;
+  SOM.setSeo({ url: `produkt.html?p=${p.id}`, title: document.title, desc: `${p.name} — ${mat.spec}. ${p.desc || ''}`.trim() });
   $('crumbs').innerHTML = `
     <a href="index.html">Hem</a> <span>/</span>
     <a href="kollektion.html?c=${p.material}">${mat.name}</a> <span>/</span>

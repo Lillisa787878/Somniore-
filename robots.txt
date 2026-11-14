@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /konto.html
+Disallow: /favoriter.html
+
+Sitemap: https://somniore.com/sitemap.xml

@@ -193,7 +193,7 @@
     <div class="header__bar">
       <div class="m-left">
         <button class="burger" id="burger" aria-label="Meny" aria-expanded="false"><span></span><span></span><span></span></button>
-        <button class="tool m-search" aria-label="Sök">${ICON.search}</button>
+        <button class="tool m-search" data-search-open aria-label="Sök">${ICON.search}</button>
       </div>
       <nav class="nav" aria-label="Huvudmeny">
         <div class="nav__item" data-mega="bastsaljare"><a href="${catLink('bastsaljare')}" class="nav__link">Bästsäljare</a></div>
@@ -203,7 +203,7 @@
       </nav>
       <a href="index.html" class="logo" aria-label="Somniore – till startsidan">SOMNIORE</a>
       <div class="tools">
-        <button class="tool hide-m" aria-label="Sök">${ICON.search}</button>
+        <button class="tool hide-m" data-search-open aria-label="Sök">${ICON.search}</button>
         <a class="tool acc-link${me ? ' is-in' : ''}" href="konto.html" aria-label="${me ? 'Mitt konto' : 'Logga in'}" title="${me ? 'Mitt konto · ' + (me.points || 0) + ' poäng' : 'Logga in'}">${ICON.user}</a>
         <a class="tool fav-link" href="favoriter.html" aria-label="Favoriter" title="Favoriter">${HEART}<span class="cart-count" id="favCount"></span></a>
         <button class="tool cart-btn" id="cartBtn" aria-label="Varukorg">${ICON.bag}<span class="cart-count" id="cartCount">0</span></button>
@@ -363,6 +363,72 @@
   $('cartClose').addEventListener('click', () => togglePanel(cart, false));
   cart.addEventListener('click', e => { if (e.target === cart) togglePanel(cart, false); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { togglePanel(drawer, false); togglePanel(cart, false); } });
+
+  /* ---------- Sök: panel uppifrån med träffar direkt medan man skriver ---------- */
+  document.body.insertAdjacentHTML('beforeend', `
+  <div class="search" id="search" aria-hidden="true" role="dialog" aria-label="Sök">
+    <div class="search__panel">
+      <form class="search__bar" id="searchForm" role="search">
+        ${ICON.search}
+        <input type="search" id="searchInput" placeholder="Sök efter linne, påslakanset, Midnatt …" autocomplete="off" aria-label="Sök produkter">
+        <button type="button" class="search__close" id="searchClose" aria-label="Stäng sök">${ICON.close}</button>
+      </form>
+      <div class="search__body">
+        <div class="search__popular" id="searchPopular">
+          <p class="search__label">Populära sökningar</p>
+          <div class="search__chips">${['Påslakanset', 'Linne', 'Percale', 'Midnatt', '2-pack örngott', 'Bäddpaket', 'Lakanset', 'Dra-på-lakan'].map(t => `<button type="button" data-q="${t}">${t}</button>`).join('')}</div>
+        </div>
+        <div class="search__results" id="searchResults" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>`);
+  const searchEl = $('search'), searchInput = $('searchInput');
+  const norm = t => t.toLowerCase().normalize('NFC').replace(/[-–]/g, ' ');
+  /* Ett sökbart kort per produkt och färg */
+  const INDEX = PRODUCTS.flatMap(p => Object.entries(colorsOf(p)).map(([k, c]) => ({
+    p, color: k, cname: c.name,
+    text: norm([p.name, MATERIALS[p.material].name, CATEGORIES[p.cat].name, CATEGORIES[p.cat].plural, c.name, COLOR_GROUPS[c.group]?.name, p.pack || '', p.material === 'linne' ? 'tvättat linne stentvättat' : 'bomull percale oxfordkant'].join(' ')),
+  })));
+  const CAT_HITS = Object.entries(COLLECTIONS).filter(([, c]) => !c.soon)
+    .map(([k, c]) => ({ title: c.title, href: k === 'baddpaket' ? 'baddpaket.html' : catLink(k), text: norm(c.title + ' ' + k) }));
+  function runSearch(q) {
+    const words = norm(q).trim().split(/\s+/).filter(Boolean);
+    $('searchPopular').hidden = words.length > 0;
+    if (!words.length) { $('searchResults').innerHTML = ''; return []; }
+    const hits = INDEX.filter(r => words.every(w => r.text.includes(w)))
+      .sort((a, b) => (norm(b.p.name).startsWith(words[0]) - norm(a.p.name).startsWith(words[0])) || (b.p.best ? 1 : 0) - (a.p.best ? 1 : 0));
+    /* Först en träff per produkt, sedan fler färger */
+    const seen = new Set(), first = [], rest = [];
+    hits.forEach(r => (seen.has(r.p.id) ? rest : (seen.add(r.p.id), first)).push(r));
+    const list = first.concat(rest).slice(0, 8);
+    const cats = CAT_HITS.filter(c => words.every(w => c.text.includes(w))).slice(0, 4);
+    $('searchResults').innerHTML = list.length || cats.length ? `
+      ${cats.length ? `<p class="search__label">Kategorier</p><div class="search__chips">${cats.map(c => `<a href="${c.href}">${c.title}</a>`).join('')}</div>` : ''}
+      ${list.length ? `<p class="search__label">Produkter <span>${hits.length}</span></p>
+      <div class="search__grid">${list.map(r => `
+        <a class="search__hit" href="${productUrl(r.p, r.color)}">
+          <img src="${productImg(r.p, r.color, CATEGORIES[r.p.cat].card)}" alt="" loading="lazy">
+          <span><b>${r.p.name}</b><small>${r.cname} · ${formatPrice(r.p)}</small></span>
+        </a>`).join('')}</div>` : ''}`
+      : `<p class="search__empty">Inga träffar för ”${q.replace(/[<>&"]/g, '')}”. Prova ett annat ord eller <a href="${catLink('alla')}">se alla sängkläder</a>.</p>`;
+    return list.length ? list : cats;
+  }
+  const openSearch = () => { togglePanel(searchEl, true); setTimeout(() => searchInput.focus(), 60); };
+  const closeSearch = () => togglePanel(searchEl, false);
+  document.querySelectorAll('[data-search-open]').forEach(b => b.addEventListener('click', openSearch));
+  $('searchClose').addEventListener('click', closeSearch);
+  searchEl.addEventListener('click', e => { if (e.target === searchEl) closeSearch(); });
+  searchInput.addEventListener('input', () => runSearch(searchInput.value));
+  searchEl.addEventListener('click', e => { const c = e.target.closest('[data-q]'); if (c) { searchInput.value = c.dataset.q; runSearch(c.dataset.q); searchInput.focus(); } });
+  $('searchForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const first = $('searchResults').querySelector('a');
+    if (first) location.href = first.href;
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && searchEl.classList.contains('open')) closeSearch();
+    if (e.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); openSearch(); }
+  });
 
   /* ---------- Varukorg (sparas i webbläsaren) ---------- */
   const KEY = 'somniore-cart';
@@ -581,7 +647,20 @@
   updateCount();
   updateFavCount();
 
+  /* Sökmotorer: rätt kanonisk adress och beskrivning på dynamiska sidor */
+  function setSeo({ url, desc, title }) {
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+    link.href = 'https://somniore.com/' + url;
+    const set = (sel, attr, val) => { const el = document.querySelector(sel); if (el && val) el.setAttribute(attr, val); };
+    set('meta[name="description"]', 'content', desc);
+    set('meta[property="og:description"]', 'content', desc);
+    set('meta[property="og:title"]', 'content', title);
+    set('meta[property="og:url"]', 'content', link.href);
+  }
+
   window.SOM = {
+    setSeo,
     club, subscribe, fadeIn, productCard, byColor, colorCards, toast, favs, favBtn, quickBtn: QUICK_BTN, catCircles, openCart: () => { renderCart(); togglePanel(cart, true); },
     addToCart(item) {
       const list = load();
